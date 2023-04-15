@@ -1,0 +1,21 @@
+# Dependency directories
+/node_modules
+/.pnp
+.pnp.js
+/designs
+
+# Build directories
+/build
+/dist
+
+# Environment files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Cache and log files
+.npm
+.pnpm
+.yarn
+.yarn-error.log

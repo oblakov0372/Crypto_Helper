@@ -1,0 +1,41 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  a {
+    margin-right: 3px;
+  }
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  z-index: 1;
+  background-color: #000000;
+  border: 1px solid #efff96;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  width: 150px;
+
+  ul {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: block;
+      margin: 5px 0;
+      padding: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 90%;
+
+      &:hover {
+        background-color: #eee;
+      }
+    }
+  }
+}
