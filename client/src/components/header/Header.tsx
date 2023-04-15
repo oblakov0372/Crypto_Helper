@@ -18,7 +18,7 @@ const Header = () => {
       <div className={classes.navigation}>
         <ul className={classes.navigationUl}>
           <li>
-            <Link to={"/platforms"}>Platforms</Link>
+            <Link to={"/platforms"}>Tools</Link>
           </li>
           <li>
             <DropDownMenu title="Services" items={items}></DropDownMenu>
