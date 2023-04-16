@@ -5,8 +5,6 @@ import { useState } from "react";
 import DropDownMenu from "../Helpers/dropDownMenu/DropDownMenu";
 import { Link } from "react-router-dom";
 const Header = () => {
-  const items = ["Service1", "Service2"];
-
   return (
     <header className={classes.header}>
       <Link to={"/"}>
@@ -21,7 +19,16 @@ const Header = () => {
             <Link to={"/platforms"}>Tools</Link>
           </li>
           <li>
-            <DropDownMenu title="Services" items={items}></DropDownMenu>
+            <DropDownMenu title="Services">
+              <ul>
+                <Link to={"/volumes"}>
+                  <li>Volumes</li>
+                </Link>
+                <Link to={"/service2"}>
+                  <li>Service2</li>
+                </Link>
+              </ul>
+            </DropDownMenu>
           </li>
         </ul>
       </div>

@@ -1,0 +1,54 @@
+.content {
+  .description {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    &__text {
+      width: 70%;
+    }
+    .title {
+      display: flex;
+      align-items: flex-end;
+      h1 {
+        color: #d0ed96;
+        font-weight: 900;
+        margin-right: 10px;
+      }
+    }
+    p {
+      font-size: 18px;
+      line-height: 1.5;
+      color: #bcbcbc;
+      margin-top: 30px;
+    }
+  }
+
+  .cryptoList {
+    margin-top: 20px;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    th {
+      text-align: left;
+      color: #8698aa;
+      font-weight: 600;
+      padding: 12px 8px;
+    }
+    tr {
+      transition: all ease-in-out 0.2s;
+      &:hover {
+        background-color: #3b3b3b;
+      }
+    }
+
+    td {
+      padding: 12px 8px;
+      border-bottom: 1px solid #eaeef2;
+      color: #dcdcdc;
+    }
+  }
+}

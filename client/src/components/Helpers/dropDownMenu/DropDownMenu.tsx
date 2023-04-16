@@ -1,36 +1,28 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import classes from "./DropDownMenu.module.scss";
 
 type Props = {
   title: string;
-  items: string[];
+  children: any;
+  setIsMenuOpen: void;
 };
 
-const DropDownMenu: React.FC<Props> = ({ title, items }) => {
+const DropDownMenu: React.FC<Props> = ({ title, children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setIsMenuOpen(false);
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
-
-  const handleItemClick = (item: string) => {
-    console.log(`Selected item: ${item}`);
-    setIsMenuOpen(false);
-  };
+  }, [menuRef]);
 
   return (
     <>
@@ -54,14 +46,8 @@ const DropDownMenu: React.FC<Props> = ({ title, items }) => {
       </div>
 
       {isMenuOpen && (
-        <div className={classes.dropdownMenu} ref={dropdownRef}>
-          <ul>
-            {items.map((i: string) => (
-              <li key={i} onClick={() => handleItemClick(i)}>
-                {i}
-              </li>
-            ))}
-          </ul>
+        <div ref={menuRef} className={classes.dropdownMenu}>
+          {children}
         </div>
       )}
     </>
