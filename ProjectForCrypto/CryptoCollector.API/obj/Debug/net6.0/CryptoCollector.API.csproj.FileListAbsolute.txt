@@ -1,0 +1,12 @@
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoCollector.API\bin\Debug\net6.0\CryptoCollector.API.deps.json
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoCollector.API\bin\Debug\net6.0\CryptoCollector.API.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoCollector.API\bin\Debug\net6.0\CryptoCollector.API.pdb
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoCollector.API\obj\Debug\net6.0\CryptoCollector.API.csproj.AssemblyReference.cache
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoCollector.API\obj\Debug\net6.0\CryptoCollector.API.GeneratedMSBuildEditorConfig.editorconfig
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoCollector.API\obj\Debug\net6.0\CryptoCollector.API.AssemblyInfoInputs.cache
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoCollector.API\obj\Debug\net6.0\CryptoCollector.API.AssemblyInfo.cs
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoCollector.API\obj\Debug\net6.0\CryptoCollector.API.csproj.CoreCompileInputs.cache
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoCollector.API\obj\Debug\net6.0\CryptoCollector.API.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoCollector.API\obj\Debug\net6.0\refint\CryptoCollector.API.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoCollector.API\obj\Debug\net6.0\CryptoCollector.API.pdb
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoCollector.API\obj\Debug\net6.0\ref\CryptoCollector.API.dll

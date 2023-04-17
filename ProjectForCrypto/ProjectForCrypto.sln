@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoHelpers.API", "CryptoHelpers.API\CryptoHelpers.API.csproj", "{64267D81-6714-4875-9D26-BCF01F0ED45D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoHelpers.API", "CryptoHelpers.API\CryptoHelpers.API.csproj", "{64267D81-6714-4875-9D26-BCF01F0ED45D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoCollector.API", "CryptoCollector.API\CryptoCollector.API.csproj", "{5F421814-3099-4291-A0BB-06B88C3E5A41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{64267D81-6714-4875-9D26-BCF01F0ED45D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64267D81-6714-4875-9D26-BCF01F0ED45D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64267D81-6714-4875-9D26-BCF01F0ED45D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F421814-3099-4291-A0BB-06B88C3E5A41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F421814-3099-4291-A0BB-06B88C3E5A41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F421814-3099-4291-A0BB-06B88C3E5A41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F421814-3099-4291-A0BB-06B88C3E5A41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

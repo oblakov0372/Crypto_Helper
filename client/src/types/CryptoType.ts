@@ -1,7 +1,8 @@
 export type CryptoType = {
-  id: number;
+  cmcRank: number;
   name: string;
   price: number;
   marketCap: number;
-  volumeChange: number;
+  volumeChange24H: number;
+  percentChange24H: number;
 };

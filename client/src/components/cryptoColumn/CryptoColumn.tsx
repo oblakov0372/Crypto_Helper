@@ -1,20 +1,27 @@
 import React from "react";
 import { CryptoType } from "../../types/CryptoType";
+import classes from "./CryptoColumn.modules.scss";
 
 const CryptoColumn: React.FC<CryptoType> = ({
-  id,
+  cmcRank,
   name,
   price,
   marketCap,
-  volumeChange,
+  volumeChange24H,
+  percentChange24H,
 }) => {
   return (
     <tr>
-      <td>{id}</td>
+      <td>{cmcRank}</td>
       <td>{name}</td>
       <td>{price}</td>
       <td>{marketCap}</td>
-      <td>{volumeChange}%</td>
+      <td style={volumeChange24H < 0 ? { color: "red" } : { color: "green" }}>
+        {volumeChange24H}%
+      </td>
+      <td style={percentChange24H < 0 ? { color: "red" } : { color: "green" }}>
+        {percentChange24H}%
+      </td>
     </tr>
   );
 };

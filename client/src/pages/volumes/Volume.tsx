@@ -1,10 +1,25 @@
-import React from "react";
 import titleImg from "../../assets/icons/increase.png";
 import classes from "./Volume.module.scss";
 import image from "../../assets/img/картинка 4.png";
-import CryptoColumn from "../../components/cryptoColumn/cryptoColumn";
+import CryptoColumn from "../../components/cryptoColumn/CryptoColumn";
+import { useEffect, useState } from "react";
+import { CryptoType } from "../../types/CryptoType";
+import axios from "axios";
 
 const Service1 = () => {
+  const [coins, setCoins] = useState<CryptoType[]>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(
+        "https://localhost:7261/api/CryptoCollector/GetCryptocurrencies?pageNumber=3"
+      );
+      setCoins(response.data);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className={classes.content}>
       <div className={classes.description}>
@@ -39,16 +54,21 @@ const Service1 = () => {
               <th>Price</th>
               <th>Market Cap</th>
               <th>Volume Change</th>
+              <th>Percentage Change</th>
             </tr>
           </thead>
           <tbody>
-            <CryptoColumn
-              id={1}
-              marketCap={2222222}
-              name="Btc"
-              price={35000}
-              volumeChange={-5}
-            />
+            {coins?.map((coin: CryptoType) => (
+              <CryptoColumn
+                key={coin.cmcRank}
+                cmcRank={coin.cmcRank}
+                marketCap={coin.marketCap}
+                name={coin.name}
+                price={coin.price}
+                volumeChange24H={coin.volumeChange24H}
+                percentChange24H={coin.percentChange24H}
+              />
+            ))}
           </tbody>
         </table>
       </div>
