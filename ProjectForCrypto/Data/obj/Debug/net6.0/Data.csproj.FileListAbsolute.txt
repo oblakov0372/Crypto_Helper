@@ -1,0 +1,14 @@
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Data\bin\Debug\net6.0\Data.deps.json
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Data\bin\Debug\net6.0\Data.runtimeconfig.json
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Data\bin\Debug\net6.0\Data.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Data\bin\Debug\net6.0\Data.pdb
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Data\obj\Debug\net6.0\Data.csproj.AssemblyReference.cache
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Data\obj\Debug\net6.0\Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Data\obj\Debug\net6.0\Data.AssemblyInfoInputs.cache
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Data\obj\Debug\net6.0\Data.AssemblyInfo.cs
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Data\obj\Debug\net6.0\Data.csproj.CoreCompileInputs.cache
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Data\obj\Debug\net6.0\Data.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Data\obj\Debug\net6.0\refint\Data.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Data\obj\Debug\net6.0\Data.pdb
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Data\obj\Debug\net6.0\Data.genruntimeconfig.cache
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Data\obj\Debug\net6.0\ref\Data.dll

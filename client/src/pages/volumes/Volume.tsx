@@ -5,20 +5,34 @@ import CryptoColumn from "../../components/cryptoColumn/CryptoColumn";
 import { useEffect, useState } from "react";
 import { CryptoType } from "../../types/CryptoType";
 import axios from "axios";
+import Pagination from "../../components/pagination/Pagination";
+import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
 
-const Service1 = () => {
+const Volume = () => {
   const [coins, setCoins] = useState<CryptoType[]>();
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [isLoadingError, setIsLoadingError] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    setIsLoading(true);
+    setIsLoadingError(false);
     const fetchData = async () => {
-      const response = await axios.get(
-        "https://localhost:7261/api/CryptoCollector/GetCryptocurrencies?pageNumber=3"
-      );
-      setCoins(response.data);
+      try {
+        const response = await axios.get(
+          `https://localhost:7261/api/CryptoCollector/GetCryptocurrencies?pageNumber=${currentPage}`
+        );
+        setCoins(response.data);
+        setIsLoading(false);
+      } catch (error: any) {
+        setIsLoadingError(true);
+        setIsLoading(false);
+      }
     };
+    console.log(currentPage);
 
     fetchData();
-  }, []);
+  }, [currentPage]);
 
   return (
     <div className={classes.content}>
@@ -46,34 +60,43 @@ const Service1 = () => {
         </div>
       </div>
       <div className={classes.cryptoList}>
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Market Cap</th>
-              <th>Volume Change</th>
-              <th>Percentage Change</th>
-            </tr>
-          </thead>
-          <tbody>
-            {coins?.map((coin: CryptoType) => (
-              <CryptoColumn
-                key={coin.cmcRank}
-                cmcRank={coin.cmcRank}
-                marketCap={coin.marketCap}
-                name={coin.name}
-                price={coin.price}
-                volumeChange24H={coin.volumeChange24H}
-                percentChange24H={coin.percentChange24H}
-              />
-            ))}
-          </tbody>
-        </table>
+        {isLoadingError ? (
+          <h2 className="error">
+            Failed to load data. Please try again later.
+          </h2>
+        ) : isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Market Cap</th>
+                <th>Volume Change</th>
+                <th>Percentage Change</th>
+              </tr>
+            </thead>
+            <tbody>
+              {coins?.map((coin: CryptoType) => (
+                <CryptoColumn
+                  key={coin.cmcRank}
+                  cmcRank={coin.cmcRank}
+                  marketCap={coin.marketCap}
+                  name={coin.name}
+                  price={coin.price}
+                  volumeChange24H={coin.volumeChange24H}
+                  percentChange24H={coin.percentChange24H}
+                />
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
+      <Pagination onChangePage={setCurrentPage} />
     </div>
   );
 };
 
-export default Service1;
+export default Volume;

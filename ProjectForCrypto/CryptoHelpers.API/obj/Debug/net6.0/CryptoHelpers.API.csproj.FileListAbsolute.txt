@@ -28,3 +28,5 @@ D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\obj\Debug\net6.
 D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\obj\Debug\net6.0\CryptoHelpers.API.pdb
 D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\obj\Debug\net6.0\CryptoHelpers.API.genruntimeconfig.cache
 D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\obj\Debug\net6.0\ref\CryptoHelpers.API.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
