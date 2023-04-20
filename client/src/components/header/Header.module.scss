@@ -80,3 +80,17 @@
     }
   }
 }
+@media screen and (max-width: 540px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    padding-bottom: 5px;
+    .socialMedia {
+      display: none;
+    }
+  }
+  .socialMedia {
+    display: none;
+  }
+}

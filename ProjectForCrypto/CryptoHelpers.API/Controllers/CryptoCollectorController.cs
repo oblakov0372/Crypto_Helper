@@ -30,13 +30,39 @@ namespace CryptoHelpers.API.Controllers
                 _memoryCache.Set("Cryptocurrencies", values, cacheEntryOptions);
             }
 
-            var cryptocurrencies = values.Skip(parameters.PageSize * (parameters.PageNumber - 1))
+            switch (parameters.OrderBy)
+            {    
+                case "name":
+                    values = values.OrderBy(o => o.Name).ToList();
+                    break;
+                case "price":
+                    values = values.OrderBy(o => o.Price).ToList();
+                    break;
+                case "marketCap":
+                    values = values.OrderBy(o => o.MarketCap).ToList();
+                    break;
+                case "volumeChange24H":
+                    values = values.OrderBy(o => o.VolumeChange24H).ToList();
+                    break;
+                case "priceChange24H":
+                    values = values.OrderBy(o => o.PercentChange24H).ToList();
+                    break;
+                default:
+                    values = values.OrderBy(o => o.CmcRank).ToList();
+                    break;
+            }
+
+            var cryptocurrencies = values?.Skip(parameters.PageSize * (parameters.PageNumber - 1))
                                                .Take(parameters.PageSize).ToList();
+
+            var countPages = Math.Ceiling((double)values.Count / parameters.PageSize);
+
+
             if (cryptocurrencies.Count == 0)
             {
                 BadRequest();
             }
-            return Ok(cryptocurrencies);
+            return Ok(new { cryptocurrencies = cryptocurrencies, countPages = countPages });
         }
     }
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { CryptoType } from "../../types/CryptoType";
-import classes from "./CryptoColumn.modules.scss";
+import styles from "./CryptoColumn.modules.scss";
 
 const CryptoColumn: React.FC<CryptoType> = ({
   cmcRank,
@@ -14,7 +14,7 @@ const CryptoColumn: React.FC<CryptoType> = ({
     <tr>
       <td>{cmcRank}</td>
       <td>{name}</td>
-      <td>{price}</td>
+      <td>{price}$</td>
       <td>{marketCap}</td>
       <td style={volumeChange24H < 0 ? { color: "red" } : { color: "green" }}>
         {volumeChange24H}%

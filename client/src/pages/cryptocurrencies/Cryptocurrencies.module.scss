@@ -37,6 +37,11 @@
       color: #8698aa;
       font-weight: 600;
       padding: 12px 8px;
+      cursor: pointer;
+      transition: all ease-in-out 0.2s;
+      &:hover {
+        background-color: #c7c7c7;
+      }
     }
     tr {
       transition: all ease-in-out 0.2s;
@@ -50,5 +55,19 @@
       border-top: 1px solid #eaeef2;
       color: #dcdcdc;
     }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .description {
+    &__img {
+      display: none;
+    }
+    .description__text {
+      width: 100%;
+    }
+  }
+  .tableWrapper {
+    overflow-x: auto;
   }
 }

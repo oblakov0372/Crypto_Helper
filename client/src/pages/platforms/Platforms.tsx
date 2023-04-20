@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./Platforms.module.scss";
 import Platform from "../../components/platform/Platform";
-import { PlatformType } from "../../components/platform/Platform";
+import { PlatformType } from "../../types/PlatformType";
 
 const platforms: PlatformType[] = [
   {
@@ -43,6 +43,14 @@ const platforms: PlatformType[] = [
     title: "CoinMarketCap",
     description:
       "CoinMarketCap is a popular website that provides real-time cryptocurrency market data, including prices, market capitalizations, trading volumes, and other metrics for thousands of cryptocurrencies. It was launched in 2013 by Brandon Chez and was acquired by Binance, one of the world's largest cryptocurrency exchanges, in 2020.",
+  },
+  {
+    imgLink:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaBDQhpcH6VMkMNj7D30FKBuPJS4JHTf1TvUOsMkdlG6PrlyW9Q-jHJHKQwMxyRmQsgck&usqp=CAU",
+    link: "https://t.me/CryptoOblakov_0372",
+    title: "My Telegram Chanel",
+    description:
+      "I enjoy sharing fascinating market insights and situations in my personally owned Telegram channel, where I strive to provide unique perspectives and analysis that can be useful to my followers. Through this platform, I aim to keep my audience updated and informed about the latest trends and developments in the financial world, and provide valuable insights into the market that can help them make informed decisions.",
   },
 ];
 

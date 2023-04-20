@@ -73,3 +73,16 @@
     }
   }
 }
+
+@media screen and (max-width: 540px) {
+  .platform {
+    .left {
+      a {
+        display: block;
+      }
+    }
+    .right {
+      display: none;
+    }
+  }
+}

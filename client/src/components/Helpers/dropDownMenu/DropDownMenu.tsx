@@ -1,34 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
-import classes from "./DropDownMenu.module.scss";
+import styles from "./DropDownMenu.module.scss";
 
 type Props = {
   title: string;
   children: any;
-  setIsMenuOpen: void;
+  isMenuOpen: boolean;
+  setIsMenuOpen: (status: boolean | any) => void;
 };
 
-const DropDownMenu: React.FC<Props> = ({ title, children }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const menuRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [menuRef]);
-
+const DropDownMenu: React.FC<Props> = ({
+  title,
+  children,
+  isMenuOpen,
+  setIsMenuOpen,
+}) => {
   return (
     <>
       <div
-        className={classes.button}
-        onClick={() => setIsMenuOpen((prev) => !prev)}
+        className={styles.button}
+        onClick={() => setIsMenuOpen((prev: boolean) => !prev)}
       >
         <a>{title}</a>
         <svg
@@ -45,11 +35,7 @@ const DropDownMenu: React.FC<Props> = ({ title, children }) => {
         </svg>
       </div>
 
-      {isMenuOpen && (
-        <div ref={menuRef} className={classes.dropdownMenu}>
-          {children}
-        </div>
-      )}
+      {isMenuOpen && <div className={styles.dropdownMenu}>{children}</div>}
     </>
   );
 };

@@ -14,7 +14,7 @@ namespace CryptoCollector.API
 
             var queryString = HttpUtility.ParseQueryString(string.Empty);
             queryString["start"] = "1";
-            queryString["limit"] = "1000";
+            queryString["limit"] = "500";
             queryString["convert"] = "USD";
 
             URL.Query = queryString.ToString();

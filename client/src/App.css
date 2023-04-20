@@ -2,6 +2,12 @@
   padding: 20px 50px;
 }
 
+@media screen and (max-width: 540px) {
+  .wrapper {
+    padding: 15px;
+  }
+}
+
 .error {
   color: #ba0000;
   font-weight: 800;

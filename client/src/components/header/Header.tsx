@@ -1,38 +1,54 @@
-import classes from "./Header.module.scss";
+import styles from "./Header.module.scss";
 import logo from "../../assets/img/logo_symbol_transparent.png";
 import telegramPng from "../../assets/icons/telegram.png";
 import { useState } from "react";
 import DropDownMenu from "../Helpers/dropDownMenu/DropDownMenu";
 import { Link } from "react-router-dom";
+import { ServiceType } from "../../types/ServiceType";
 const Header = () => {
+  const [isDropDownServicesOpen, setIsDropDownServicesOpen] =
+    useState<boolean>(false);
+
+  const services: ServiceType[] = [
+    { link: "/cryptocurrencies", name: "Cryptocurrencies" },
+    { link: "/service2", name: "Service2" },
+  ];
+
   return (
-    <header className={classes.header}>
+    <header className={styles.header}>
       <Link to={"/"}>
-        <div className={classes.logo}>
+        <div className={styles.logo}>
           <img src={logo} alt="Crypto_0372" height={50} />
           <h2>Crypto_0372</h2>
         </div>
       </Link>
-      <div className={classes.navigation}>
-        <ul className={classes.navigationUl}>
+      <div className={styles.navigation}>
+        <ul className={styles.navigationUl}>
           <li>
             <Link to={"/platforms"}>Tools</Link>
           </li>
           <li>
-            <DropDownMenu title="Services">
+            <DropDownMenu
+              isMenuOpen={isDropDownServicesOpen}
+              setIsMenuOpen={setIsDropDownServicesOpen}
+              title="Services"
+            >
               <ul>
-                <Link to={"/volumes"}>
-                  <li>Volumes</li>
-                </Link>
-                <Link to={"/service2"}>
-                  <li>Service2</li>
-                </Link>
+                {services.map((service: ServiceType, index: number) => (
+                  <Link
+                    onClick={() => setIsDropDownServicesOpen(false)}
+                    key={index}
+                    to={service.link}
+                  >
+                    <li>{service.name}</li>
+                  </Link>
+                ))}
               </ul>
             </DropDownMenu>
           </li>
         </ul>
       </div>
-      <div className={classes.socialMedia}>
+      <div className={styles.socialMedia}>
         <ul>
           <li>
             <a href="https://t.me/CryptoOblakov_0372" target="_blank">

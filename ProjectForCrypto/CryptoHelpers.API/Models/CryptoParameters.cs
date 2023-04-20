@@ -2,5 +2,9 @@
 {
     public class CryptoParameters:QueryStringParameters
     {
+        public CryptoParameters()
+        {
+            OrderBy = "cmcRank";
+        }
     }
 }
