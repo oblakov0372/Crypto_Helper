@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import coin from "./slices/coin";
+import tradeStatistic from "./slices/tradeStatistic";
 export const store = configureStore({
   reducer: {
-    coin,
+    tradeStatistic,
   },
 });
 

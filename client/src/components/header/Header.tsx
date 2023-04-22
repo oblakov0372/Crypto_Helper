@@ -11,7 +11,7 @@ const Header = () => {
 
   const services: ServiceType[] = [
     { link: "/cryptocurrencies", name: "Cryptocurrencies" },
-    { link: "/service2", name: "Service2" },
+    { link: "/tradesTracker", name: "Trades Tracker" },
   ];
 
   return (

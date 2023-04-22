@@ -1,8 +1,8 @@
 import React from "react";
 import { CryptoType } from "../../types/CryptoType";
-import styles from "./CryptoColumn.modules.scss";
+import styles from "./CryptoRow.modules.scss";
 
-const CryptoColumn: React.FC<CryptoType> = ({
+const CryptoRow: React.FC<CryptoType> = ({
   cmcRank,
   name,
   price,
@@ -26,4 +26,4 @@ const CryptoColumn: React.FC<CryptoType> = ({
   );
 };
 
-export default CryptoColumn;
+export default CryptoRow;

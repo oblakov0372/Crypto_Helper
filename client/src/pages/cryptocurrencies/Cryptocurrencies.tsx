@@ -1,20 +1,16 @@
 import titleImg from "../../assets/icons/increase.png";
 import styles from "./Cryptocurrencies.module.scss";
 import image from "../../assets/img/картинка 4.png";
-import CryptoColumn from "../../components/cryptoColumn/CryptoColumn";
+import CryptoRow from "../../components/cryptoRow/CryptoRow";
 import { useEffect, useState } from "react";
 import { CryptoType } from "../../types/CryptoType";
 import axios from "axios";
 import Pagination from "../../components/pagination/Pagination";
 import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
-
-type CryptocurrencyColumn = {
-  name: string;
-  orderBy: string;
-};
+import { Column } from "../../types/Column";
 
 const Cryptocurrencies = () => {
-  const columns: CryptocurrencyColumn[] = [
+  const columns: Column[] = [
     { name: "#", orderBy: "cmcRank" },
     { name: "Name", orderBy: "name" },
     { name: "Price", orderBy: "price" },
@@ -85,7 +81,7 @@ const Cryptocurrencies = () => {
             <table>
               <thead>
                 <tr>
-                  {columns.map((column: CryptocurrencyColumn) => (
+                  {columns.map((column: Column) => (
                     <th
                       key={column.orderBy}
                       onClick={() => setOrderBy(column.orderBy)}
@@ -97,7 +93,7 @@ const Cryptocurrencies = () => {
               </thead>
               <tbody>
                 {coins?.map((coin: CryptoType) => (
-                  <CryptoColumn
+                  <CryptoRow
                     key={coin.cmcRank}
                     cmcRank={coin.cmcRank}
                     marketCap={coin.marketCap}
