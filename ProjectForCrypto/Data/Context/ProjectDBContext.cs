@@ -6,6 +6,7 @@ namespace Data.Context
     public class ProjectDBContext:DbContext
     {
         public DbSet<CoinEntity> Coins { get; set; }
+        public DbSet<TradeFutureEntity> Trades { get; set; } 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
