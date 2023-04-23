@@ -1,13 +1,59 @@
 import React from "react";
 import { TradeFutureType } from "../../types/TradeFutureType";
-const TradeRow: React.FC<TradeFutureType> = ({
+import edit from "../../assets/icons/edit.png";
+import remove from "../../assets/icons/delete.png";
+import { authenticatedRequest } from "../../utils/Request";
+import { useDispatch } from "react-redux";
+import { deleteTrade } from "../../redux/slices/tradeStatistic";
+type Props = {
+  id: number;
+  coinName: string;
+  positionSize: number;
+  stopLossPercent: number;
+  takeProfitPercent: number;
+  earnedMoney: number;
+  tradingViewImgLink: string;
+  setIsOpenModal: (value: boolean) => void;
+  setTrade: (value: TradeFutureType) => void;
+};
+const TradeRow: React.FC<Props> = ({
+  id,
   coinName,
   stopLossPercent,
   takeProfitPercent,
   positionSize,
   earnedMoney,
   tradingViewImgLink,
+  setIsOpenModal,
+  setTrade,
 }) => {
+  const dispatch = useDispatch();
+
+  const deleteRow = async () => {
+    try {
+      const response = await authenticatedRequest(
+        `TradeFuture`,
+        {
+          method: "delete",
+        },
+        id
+      );
+      dispatch(
+        deleteTrade({
+          id,
+          coinName,
+          stopLossPercent,
+          takeProfitPercent,
+          positionSize,
+          earnedMoney,
+          tradingViewImgLink: tradingViewImgLink,
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <tr>
       <td>{coinName}</td>
@@ -21,6 +67,26 @@ const TradeRow: React.FC<TradeFutureType> = ({
         <a target="_blank" href={tradingViewImgLink}>
           Trade Image
         </a>
+      </td>
+      <td>
+        <img
+          onClick={() => {
+            setIsOpenModal(true);
+            setTrade({
+              id,
+              coinName,
+              stopLossPercent,
+              takeProfitPercent,
+              positionSize,
+              earnedMoney,
+              tradingViewImgLink: tradingViewImgLink,
+            });
+          }}
+          src={edit}
+          alt="edit"
+          width={30}
+        />
+        <img onClick={() => deleteRow()} src={remove} alt="remove" width={30} />
       </td>
     </tr>
   );

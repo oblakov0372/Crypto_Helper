@@ -49,10 +49,10 @@ namespace Data.Migrations
                     b.Property<decimal>("StopLossPercent")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("TakeProffitPercent")
+                    b.Property<decimal>("TakeProfitPercent")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("TradingViewImglink")
+                    b.Property<string>("TradingViewImgLink")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

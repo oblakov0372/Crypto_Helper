@@ -42,7 +42,9 @@ export const TradeStatisticSlice = createSlice({
       state.totalEarnedMoney += action.payload.earnedMoney;
     },
     deleteTrade(state, action: PayloadAction<TradeFutureType>) {
-      state.trades = state.trades.filter((trade) => trade !== action.payload);
+      state.trades = state.trades.filter(
+        (trade) => trade.id !== action.payload.id
+      );
       state.totalTrades -= 1;
       if (action.payload.earnedMoney > 0) {
         state.totalPositivTrades -= 1;
@@ -51,7 +53,7 @@ export const TradeStatisticSlice = createSlice({
     },
     editTrade(state, action: PayloadAction<TradeFutureType>) {
       const editedTrade = state.trades.find(
-        (trade) => trade === action.payload
+        (trade) => trade.id === action.payload.id
       );
       if (editedTrade) {
         const tradeIndex = state.trades.indexOf(editedTrade);

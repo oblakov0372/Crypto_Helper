@@ -16,7 +16,7 @@ namespace ApplicationService.implementations
         public async Task<List<TradeFutureDto>> GetTradesAsync(int userId)
         {
             var trades = new List<TradeFutureDto>();
-            foreach (var trade in await _context.Trades.Where(t => t.UserId == 4).ToListAsync())
+            foreach (var trade in await _context.Trades.Where(t => t.UserId == 1).ToListAsync())
             {
                 trades.Add(new TradeFutureDto
                 {
@@ -25,8 +25,8 @@ namespace ApplicationService.implementations
                     EarnedMoney = trade.EarnedMoney,
                     PositionSize = trade.PositionSize,
                     StopLossPercent = trade.StopLossPercent,
-                    TakeProffitPercent = trade.TakeProffitPercent,
-                    TradingViewImglink = trade.TradingViewImglink,
+                    TakeProfitPercent = trade.TakeProfitPercent,
+                    TradingViewImgLink = trade.TradingViewImgLink,
                 });
             }
             return trades;
@@ -39,9 +39,9 @@ namespace ApplicationService.implementations
                 EarnedMoney = model.EarnedMoney,
                 PositionSize = model.PositionSize,
                 StopLossPercent = model.StopLossPercent,
-                TakeProffitPercent = model.TakeProffitPercent,
-                TradingViewImglink = model.TradingViewImglink,
-                UserId = 4,
+                TakeProfitPercent = model.TakeProfitPercent,
+                TradingViewImgLink = model.TradingViewImgLink,
+                UserId = 1,
                 CreatedBy = 1,
                 CreatedOn = DateTime.Now
             };
@@ -68,9 +68,9 @@ namespace ApplicationService.implementations
             tradeForChange.CoinName = model.CoinName;
             tradeForChange.PositionSize = model.PositionSize;
             tradeForChange.StopLossPercent = model.StopLossPercent;
-            tradeForChange.TakeProffitPercent = model.TakeProffitPercent;
+            tradeForChange.TakeProfitPercent = model.TakeProfitPercent;
             tradeForChange.EarnedMoney = model.EarnedMoney;
-            tradeForChange.TradingViewImglink = model.TradingViewImglink;
+            tradeForChange.TradingViewImgLink = model.TradingViewImgLink;
             _context.Trades.Update(tradeForChange);
             await _context.SaveChangesAsync();
             return true;

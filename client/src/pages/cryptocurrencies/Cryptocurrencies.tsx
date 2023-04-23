@@ -8,7 +8,7 @@ import axios from "axios";
 import Pagination from "../../components/pagination/Pagination";
 import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
 import { Column } from "../../types/Column";
-import { anonimRequest } from "../../utils/AnonimRequest";
+import { anonymRequest } from "../../utils/Request";
 import { CryptoCollectorDataType } from "../../types/requesTypes/CryptoCollectorDataType";
 
 const Cryptocurrencies = () => {
@@ -39,12 +39,11 @@ const Cryptocurrencies = () => {
           pageSize: "20",
           orderBy: orderBy,
         };
-        const data = await anonimRequest<CryptoCollectorDataType>(
-          "CryptoCollector",
-          { queryParams }
-        );
-        setCoins(data.cryptocurrencies);
-        setCountPages(data.countPages);
+        const response = await anonymRequest("CryptoCollector", {
+          queryParams,
+        });
+        setCoins(response.data.cryptocurrencies);
+        setCountPages(response.data.countPages);
         setIsLoading(false);
       } catch (error) {
         setIsLoadingError(true);
