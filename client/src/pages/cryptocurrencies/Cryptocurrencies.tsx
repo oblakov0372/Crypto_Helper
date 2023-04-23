@@ -8,6 +8,8 @@ import axios from "axios";
 import Pagination from "../../components/pagination/Pagination";
 import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
 import { Column } from "../../types/Column";
+import { anonimRequest } from "../../utils/AnonimRequest";
+import { CryptoCollectorDataType } from "../../types/requesTypes/CryptoCollectorDataType";
 
 const Cryptocurrencies = () => {
   const columns: Column[] = [
@@ -32,19 +34,23 @@ const Cryptocurrencies = () => {
     setIsLoadingError(false);
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://localhost:7261/api/CryptoCollector/GetCryptocurrencies?pageNumber=${currentPage}&pageSize=20&orderBy=${orderBy}`
+        const queryParams = {
+          pageNumber: currentPage,
+          pageSize: "20",
+          orderBy: orderBy,
+        };
+        const data = await anonimRequest<CryptoCollectorDataType>(
+          "CryptoCollector",
+          { queryParams }
         );
-        setCoins(response.data.cryptocurrencies);
-        setCountPages(response.data.countPages);
+        setCoins(data.cryptocurrencies);
+        setCountPages(data.countPages);
         setIsLoading(false);
-      } catch (error: any) {
+      } catch (error) {
         setIsLoadingError(true);
         setIsLoading(false);
       }
     };
-    console.log(currentPage);
-
     fetchData();
   }, [currentPage, orderBy]);
 

@@ -1,4 +1,5 @@
 ﻿using ApplicationService.DTOs;
+using ApplicationService.Models.TradeFutureModels;
 using Data.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,9 @@ namespace ApplicationService.implementations
 {
     public interface ITradeFutureManagementService
     {
-        Task<List<TradeFutureDto>> GetTradesAsync (int userId);
-        Task<bool> CreateTradeAsync (TradeFutureDto tradeFuture);
-        Task<bool> UpdateTradeAsync (TradeFutureDto tradeFuture);
-        Task<bool> DeleteTradeAsync(int tradeId);
+        public Task<List<TradeFutureDto>> GetTradesAsync (int userId);
+        public Task<bool> CreateTradeAsync (TradeFutureCreateModel model);
+        public Task<bool> UpdateTradeAsync (TradeFutureUpdateModel model);
+        public Task<bool> DeleteTradeAsync(int tradeId);
     }
 }

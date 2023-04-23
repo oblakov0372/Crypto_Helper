@@ -1,3 +1,6 @@
+using ApplicationService.implementations;
+using Data.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +10,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddMemoryCache();
+
+#region Services
+builder.Services.AddScoped<ProjectDBContext>();
+builder.Services.AddScoped<ITradeFutureManagementService, TradeFutureManagementService>();
+#endregion
+
 
 #region CORS
 builder.Services.AddCors(options =>

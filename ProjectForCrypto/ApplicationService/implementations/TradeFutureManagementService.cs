@@ -1,11 +1,12 @@
 ﻿using ApplicationService.DTOs;
+using ApplicationService.Models.TradeFutureModels;
 using Data.Context;
 using Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApplicationService.implementations
 {
-    public class TradeFutureManagementService:ITradeFutureManagementService
+    public class TradeFutureManagementService : ITradeFutureManagementService
     {
         private readonly ProjectDBContext _context;
         public TradeFutureManagementService(ProjectDBContext context)
@@ -15,7 +16,7 @@ namespace ApplicationService.implementations
         public async Task<List<TradeFutureDto>> GetTradesAsync(int userId)
         {
             var trades = new List<TradeFutureDto>();
-            foreach (var trade in await _context.Trades.ToListAsync())
+            foreach (var trade in await _context.Trades.Where(t => t.UserId == 4).ToListAsync())
             {
                 trades.Add(new TradeFutureDto
                 {
@@ -30,18 +31,17 @@ namespace ApplicationService.implementations
             }
             return trades;
         }
-        public async Task<bool> CreateTradeAsync(TradeFutureDto tradeFuture)
+        public async Task<bool> CreateTradeAsync(TradeFutureCreateModel model)
         {
             var trade = new TradeFutureEntity()
             {
-                Id = tradeFuture.Id,
-                CoinName = tradeFuture.CoinName,
-                EarnedMoney = tradeFuture.EarnedMoney,
-                PositionSize = tradeFuture.PositionSize,
-                StopLossPercent = tradeFuture.StopLossPercent,
-                TakeProffitPercent = tradeFuture.TakeProffitPercent,
-                TradingViewImglink = tradeFuture.TradingViewImglink,
-                UserId = 1,
+                CoinName = model.CoinName,
+                EarnedMoney = model.EarnedMoney,
+                PositionSize = model.PositionSize,
+                StopLossPercent = model.StopLossPercent,
+                TakeProffitPercent = model.TakeProffitPercent,
+                TradingViewImglink = model.TradingViewImglink,
+                UserId = 4,
                 CreatedBy = 1,
                 CreatedOn = DateTime.Now
             };
@@ -58,19 +58,19 @@ namespace ApplicationService.implementations
             }
         }
 
-        public async Task<bool> UpdateTradeAsync(TradeFutureDto tradeFuture)
+        public async Task<bool> UpdateTradeAsync(TradeFutureUpdateModel model)
         {
-            var tradeForChange = _context.Trades.Where(t => t.Id == tradeFuture.Id).FirstOrDefault();
+            var tradeForChange = _context.Trades.Where(t => t.Id == model.Id).FirstOrDefault();
 
-            if(tradeForChange == null)
+            if (tradeForChange == null)
                 return false;
 
-            tradeForChange.CoinName = tradeFuture.CoinName;
-            tradeForChange.PositionSize = tradeFuture.PositionSize;
-            tradeForChange.StopLossPercent = tradeFuture.StopLossPercent;
-            tradeForChange.TakeProffitPercent = tradeFuture.TakeProffitPercent;
-            tradeForChange.EarnedMoney = tradeFuture.EarnedMoney;
-            tradeForChange.TradingViewImglink = tradeFuture.TradingViewImglink;
+            tradeForChange.CoinName = model.CoinName;
+            tradeForChange.PositionSize = model.PositionSize;
+            tradeForChange.StopLossPercent = model.StopLossPercent;
+            tradeForChange.TakeProffitPercent = model.TakeProffitPercent;
+            tradeForChange.EarnedMoney = model.EarnedMoney;
+            tradeForChange.TradingViewImglink = model.TradingViewImglink;
             _context.Trades.Update(tradeForChange);
             await _context.SaveChangesAsync();
             return true;

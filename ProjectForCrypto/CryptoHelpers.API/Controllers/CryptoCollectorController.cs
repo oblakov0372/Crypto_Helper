@@ -14,7 +14,7 @@ namespace CryptoHelpers.API.Controllers
         {
             _memoryCache = memoryCache;
         }
-        [HttpGet("GetCryptocurrencies")]
+        [HttpGet]
         public async Task<IActionResult> GetCryptocurrencies([FromQuery] CryptoParameters parameters)
         {
             if (!_memoryCache.TryGetValue("Cryptocurrencies", out List<CryptoModel> values))

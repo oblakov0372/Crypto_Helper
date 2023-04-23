@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ApplicationService\ApplicationService.csproj" />
     <ProjectReference Include="..\CryptoCollector.API\CryptoCollector.API.csproj" />
   </ItemGroup>
 
