@@ -1,0 +1,15 @@
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\obj\Debug\net6.0\ApplicationService.csproj.AssemblyReference.cache
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\obj\Debug\net6.0\ApplicationService.GeneratedMSBuildEditorConfig.editorconfig
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\obj\Debug\net6.0\ApplicationService.AssemblyInfoInputs.cache
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\obj\Debug\net6.0\ApplicationService.AssemblyInfo.cs
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\obj\Debug\net6.0\ApplicationService.csproj.CoreCompileInputs.cache
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\bin\Debug\net6.0\ApplicationService.deps.json
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\bin\Debug\net6.0\ApplicationService.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\bin\Debug\net6.0\ApplicationService.pdb
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\bin\Debug\net6.0\Data.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\bin\Debug\net6.0\Data.pdb
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\obj\Debug\net6.0\ApplicationService.csproj.CopyComplete
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\obj\Debug\net6.0\ApplicationService.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\obj\Debug\net6.0\refint\ApplicationService.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\obj\Debug\net6.0\ApplicationService.pdb
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\obj\Debug\net6.0\ref\ApplicationService.dll

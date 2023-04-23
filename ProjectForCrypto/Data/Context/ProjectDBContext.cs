@@ -5,12 +5,12 @@ namespace Data.Context
 {
     public class ProjectDBContext:DbContext
     {
-        public DbSet<CoinEntity> Coins { get; set; }
-        public DbSet<TradeFutureEntity> Trades { get; set; } 
+        public DbSet<UserEntity> Users { get; set; }
+        public DbSet<TradeFutureEntity> Trades { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=OBLAKOV0372\\SQLEXPRESS;Database=CryptoProject;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Server=OBLAKOV0372\\SQLEXPRESS;Database=CryptoHelper;Trusted_Connection=True;TrustServerCertificate=True;");
         }
     }
 }
