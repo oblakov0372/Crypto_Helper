@@ -5,6 +5,7 @@ import remove from "../../assets/icons/delete.png";
 import { authenticatedRequest } from "../../utils/Request";
 import { useDispatch } from "react-redux";
 import { deleteTrade } from "../../redux/slices/tradeStatistic";
+import styles from "./TradeRow.module.scss";
 type Props = {
   id: number;
   coinName: string;
@@ -64,7 +65,15 @@ const TradeRow: React.FC<Props> = ({
         {earnedMoney}$
       </td>
       <td>
-        <a target="_blank" href={tradingViewImgLink}>
+        <a
+          className={
+            !tradingViewImgLink.includes("https://www.tradingview.com")
+              ? styles.disabled
+              : undefined
+          }
+          target="_blank"
+          href={tradingViewImgLink}
+        >
           Trade Image
         </a>
       </td>

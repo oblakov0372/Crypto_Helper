@@ -4,6 +4,8 @@ import { authenticatedRequest } from "../../utils/Request";
 import { TradeFutureType } from "../../types/TradeFutureType";
 import { useDispatch } from "react-redux";
 import { addTrade, editTrade } from "../../redux/slices/tradeStatistic";
+import MyButton from "../../components/UI/MyButton/MyButton";
+
 type Props = {
   trade?: TradeFutureType;
   setIsOpenModal: (value: boolean) => void;
@@ -81,7 +83,7 @@ const TradeModal: React.FC<Props> = ({ trade, setIsOpenModal }) => {
           </button>
         </div>
         <div className={styles.modalBody}>
-          <form onSubmit={handleSubmit}>
+          <form>
             <div className={styles.formGroup}>
               <label htmlFor="symbol">Symbol</label>
               <input
@@ -136,13 +138,7 @@ const TradeModal: React.FC<Props> = ({ trade, setIsOpenModal }) => {
                 onChange={(e) => setTradingViewImgLink(e.target.value)}
               />
             </div>
-            <button
-              className={styles.submit}
-              type="button"
-              onClick={() => handleSubmit()}
-            >
-              {submitText}
-            </button>
+            <MyButton onClick={() => handleSubmit()}>{submitText}</MyButton>
           </form>
         </div>
       </div>

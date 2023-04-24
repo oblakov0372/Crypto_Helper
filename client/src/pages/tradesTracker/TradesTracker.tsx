@@ -9,7 +9,7 @@ import { setTrades } from "../../redux/slices/tradeStatistic";
 import { authenticatedRequest } from "../../utils/Request";
 import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
 import TradeModal from "../../components/tradeModal/TradeModal";
-
+import MyButton from "../../components/UI/MyButton/MyButton";
 const TradesTracker = () => {
   const [isLoadingData, setIsLoadingData] = useState<boolean>(true);
   const [isLoadingDataError, setIsLoadingDataError] = useState<boolean>(false);
@@ -66,7 +66,7 @@ const TradesTracker = () => {
           </div>
           <div className={styles.description__img}></div>
         </div>
-        <div className={styles.functional}>
+        <div className={styles.content}>
           {isLoadingDataError ? (
             <h2 className="error">
               Failed to load data. Please try again later.
@@ -74,32 +74,46 @@ const TradesTracker = () => {
           ) : isLoadingData ? (
             <LoadingSpinner />
           ) : (
-            <div className={styles.tableWrapper}>
-              <table>
-                <thead>
-                  <tr>
-                    {tableColumns.map((column: Column, index: number) => (
-                      <th key={index}>{column.name}</th>
+            <div className={styles.functional}>
+              <div className={styles.tableWrapper}>
+                <div className={styles.title}>
+                  <h1>My Trades</h1>
+                  <MyButton
+                    onClick={() => {
+                      setIsOpenModal(true);
+                      setTrade(undefined);
+                    }}
+                  >
+                    New Trade
+                  </MyButton>
+                </div>
+                <table>
+                  <thead>
+                    <tr>
+                      {tableColumns.map((column: Column, index: number) => (
+                        <th key={index}>{column.name}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {trades.map((trade: TradeFutureType) => (
+                      <TradeRow
+                        key={trade.id}
+                        id={trade.id}
+                        coinName={trade.coinName}
+                        positionSize={trade.positionSize}
+                        stopLossPercent={trade.stopLossPercent}
+                        takeProfitPercent={trade.takeProfitPercent}
+                        tradingViewImgLink={trade.tradingViewImgLink}
+                        earnedMoney={trade.earnedMoney}
+                        setIsOpenModal={setIsOpenModal}
+                        setTrade={setTrade}
+                      />
                     ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {trades.map((trade: TradeFutureType) => (
-                    <TradeRow
-                      key={trade.id}
-                      id={trade.id}
-                      coinName={trade.coinName}
-                      positionSize={trade.positionSize}
-                      stopLossPercent={trade.stopLossPercent}
-                      takeProfitPercent={trade.takeProfitPercent}
-                      tradingViewImgLink={trade.tradingViewImgLink}
-                      earnedMoney={trade.earnedMoney}
-                      setIsOpenModal={setIsOpenModal}
-                      setTrade={setTrade}
-                    />
-                  ))}
-                </tbody>
-              </table>
+                  </tbody>
+                </table>
+              </div>
+              <div className={styles.functional_ride}></div>
             </div>
           )}
         </div>

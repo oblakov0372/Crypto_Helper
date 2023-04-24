@@ -16,7 +16,6 @@ namespace ApplicationService.Models.TradeFutureModels
         public decimal StopLossPercent { get; set; }
         public decimal TakeProfitPercent { get; set; }
         public decimal EarnedMoney { get; set; }
-        [Required]
         public string TradingViewImgLink { get; set; } = string.Empty;
     }
 }

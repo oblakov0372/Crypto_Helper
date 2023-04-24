@@ -25,56 +25,72 @@
 
   .functional {
     margin-top: 20px;
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 16px;
-      font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    .tableWrapper {
+      width: 80%;
 
-      th {
-        text-align: left;
-        color: #8698aa;
-        font-weight: 600;
-        padding: 12px 8px;
-        cursor: pointer;
-        transition: all ease-in-out 0.2s;
-        &:hover {
-          background-color: #c7c7c7;
+      .title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h1 {
+          color: #d0ed96;
         }
       }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 16px;
+        font-weight: 500;
 
-      tr {
-        transition: all ease-in-out 0.2s;
-        &:hover {
-          background-color: #3b3b3b;
-        }
-      }
-
-      td {
-        padding: 12px 8px;
-        border-top: 1px solid #eaeef2;
-        color: #dcdcdc;
-
-        img {
-          transition: all ease-in-out 0.2s;
-          opacity: 0.5;
+        th {
+          text-align: left;
+          color: #8698aa;
+          font-weight: 600;
+          padding: 12px 8px;
           cursor: pointer;
+          transition: all ease-in-out 0.2s;
           &:hover {
-            opacity: 1;
+            background-color: #c7c7c7;
           }
         }
 
-        a {
-          transition: all ease-in-out 0.2s;
-          &:hover {
-            color: #0775e3;
+        td {
+          padding: 12px 8px;
+          border-top: 1px solid #eaeef2;
+          color: #dcdcdc;
+
+          img {
+            transition: all ease-in-out 0.2s;
+            opacity: 0.5;
+            cursor: pointer;
+            &:hover {
+              opacity: 1;
+            }
+          }
+
+          a {
+            transition: all ease-in-out 0.2s;
+            &:hover {
+              color: #0775e3;
+            }
+          }
+          &:last-child {
+            border-top: 0;
+            display: flex;
+            justify-content: space-between;
           }
         }
-        &:last-child {
-          border-top: 0;
-          display: flex;
-          justify-content: space-between;
-        }
+      }
+    }
+    &_ride {
+      width: 19%;
+      text-align: center;
+      .addTradeButton {
+        width: 80%;
+        padding: 15px 30px;
+        font-size: 24px;
       }
     }
   }
