@@ -10,6 +10,7 @@ import { authenticatedRequest } from "../../utils/Request";
 import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
 import TradeModal from "../../components/tradeModal/TradeModal";
 import MyButton from "../../components/UI/MyButton/MyButton";
+import { PieChart } from "react-minimal-pie-chart";
 const TradesTracker = () => {
   const [isLoadingData, setIsLoadingData] = useState<boolean>(true);
   const [isLoadingDataError, setIsLoadingDataError] = useState<boolean>(false);
@@ -24,6 +25,7 @@ const TradesTracker = () => {
         const response = await authenticatedRequest("TradeFuture");
         dispatch(setTrades(response.data));
         setIsLoadingData(false);
+        console.log("data");
       } catch (error) {
         console.error(error);
         setIsLoadingData(false);
@@ -36,6 +38,15 @@ const TradesTracker = () => {
 
   const { totalEarnedMoney, totalPositivTrades, totalTrades, trades } =
     useSelector((state: RootState) => state.tradeStatistic);
+
+  const dataForPieCahrt = [
+    { title: "Profit", value: totalPositivTrades, color: "#00ff00" },
+    {
+      title: "Lose",
+      value: totalTrades - totalPositivTrades,
+      color: "#ff0000",
+    },
+  ];
   const tableColumns: Column[] = [
     { name: "Symbol", orderBy: "symbol" },
     { name: "Position Size$", orderBy: "positionSize" },
@@ -113,7 +124,50 @@ const TradesTracker = () => {
                   </tbody>
                 </table>
               </div>
-              <div className={styles.functional_ride}></div>
+              <div className={styles.functional__ride}>
+                <div className={styles.tradesInformationsDiagram}>
+                  <div className="flex justify-between items-center">
+                    <h2 className="font-bold">Trade Analysis</h2>
+                    <p
+                      className={
+                        "font-black " +
+                        (totalEarnedMoney > 0
+                          ? "text-green-500"
+                          : "text-red-500")
+                      }
+                    >
+                      {totalEarnedMoney}$
+                    </p>
+                  </div>
+                  <div className="flex items-center">
+                    <PieChart
+                      className={styles.PieChart}
+                      data={dataForPieCahrt}
+                      lineWidth={15}
+                      paddingAngle={5}
+                      rounded
+                      animate
+                      animationDuration={1000}
+                    />
+                    <div className="ml-4">
+                      <ul>
+                        <li className="flex items-center">
+                          Positive:
+                          <p className="text-green-500 ml-1">
+                            {totalPositivTrades}
+                          </p>
+                        </li>
+                        <li className="flex items-center">
+                          Negative:
+                          <p className="text-red-500 ml-1">
+                            {totalTrades - totalPositivTrades}
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
         </div>

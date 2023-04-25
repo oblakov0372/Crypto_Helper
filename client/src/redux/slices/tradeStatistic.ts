@@ -27,6 +27,7 @@ export const TradeStatisticSlice = createSlice({
         (sum, trade) => sum + trade.earnedMoney,
         0
       );
+      state.totalPositivTrades = 0;
       state.trades.forEach((trade) => {
         if (trade.earnedMoney > 0) {
           state.totalPositivTrades += 1;

@@ -13,6 +13,7 @@
         color: #d0ed96;
         font-weight: 900;
         margin-right: 10px;
+        font-size: 28px;
       }
     }
     p {
@@ -36,6 +37,7 @@
         align-items: center;
         h1 {
           color: #d0ed96;
+          font-size: 28px;
         }
       }
       table {
@@ -84,13 +86,24 @@
         }
       }
     }
-    &_ride {
-      width: 19%;
+    &__ride {
+      width: 18%;
       text-align: center;
-      .addTradeButton {
-        width: 80%;
-        padding: 15px 30px;
-        font-size: 24px;
+
+      .tradesInformationsDiagram {
+        text-align: left;
+        padding: 10px;
+        width: 100%;
+        border-radius: 20px;
+        background-color: rgba(62, 62, 62, 0.4);
+
+        h2 {
+          font-size: 18px;
+        }
+        .PieChart {
+          margin-top: 10px;
+          width: 70px;
+        }
       }
     }
   }

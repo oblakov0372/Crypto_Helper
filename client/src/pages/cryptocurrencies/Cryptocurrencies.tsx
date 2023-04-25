@@ -4,12 +4,10 @@ import image from "../../assets/img/картинка 4.png";
 import CryptoRow from "../../components/cryptoRow/CryptoRow";
 import { useEffect, useState } from "react";
 import { CryptoType } from "../../types/CryptoType";
-import axios from "axios";
 import Pagination from "../../components/pagination/Pagination";
 import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
 import { Column } from "../../types/Column";
 import { anonymRequest } from "../../utils/Request";
-import { CryptoCollectorDataType } from "../../types/requesTypes/CryptoCollectorDataType";
 
 const Cryptocurrencies = () => {
   const columns: Column[] = [
