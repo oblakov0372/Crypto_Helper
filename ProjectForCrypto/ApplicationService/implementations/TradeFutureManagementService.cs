@@ -45,7 +45,7 @@ namespace ApplicationService.implementations
                 CreatedBy = 1,
                 CreatedOn = DateTime.Now
             };
-
+            
             try
             {
                 await _context.Trades.AddAsync(trade);

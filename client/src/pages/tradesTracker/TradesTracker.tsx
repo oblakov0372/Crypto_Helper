@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./TradesTracker.module.scss";
+import titleImage from "../../assets/img/Картинка 2.png";
 import { Column } from "../../types/Column";
 import TradeRow from "../../components/tradeRow/TradeRow";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,19 +12,33 @@ import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
 import TradeModal from "../../components/tradeModal/TradeModal";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import { PieChart } from "react-minimal-pie-chart";
+import Pagination from "../../components/pagination/Pagination";
+
 const TradesTracker = () => {
+  //#region useStates
   const [isLoadingData, setIsLoadingData] = useState<boolean>(true);
   const [isLoadingDataError, setIsLoadingDataError] = useState<boolean>(false);
   const [isOpenModel, setIsOpenModal] = useState<boolean>(false);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [countPages, setCountPages] = useState<number>(1);
   const [trade, setTrade] = useState<TradeFutureType>();
+  //#endregion
+
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const queryParams = {
+          pageNumber: currentPage,
+          pageSize: "20",
+        };
         setIsLoadingData(true);
         setIsLoadingDataError(false);
-        const response = await authenticatedRequest("TradeFuture");
-        dispatch(setTrades(response.data));
+        const response = await authenticatedRequest("TradeFuture", {
+          queryParams,
+        });
+        dispatch(setTrades(response.data.trades));
+        setCountPages(response.data.countPages);
         setIsLoadingData(false);
         console.log("data");
       } catch (error) {
@@ -34,7 +49,7 @@ const TradesTracker = () => {
     };
 
     fetchData();
-  }, []);
+  }, [currentPage]);
 
   const { totalEarnedMoney, totalPositivTrades, totalTrades, trades } =
     useSelector((state: RootState) => state.tradeStatistic);
@@ -75,7 +90,9 @@ const TradesTracker = () => {
               take corrective action.
             </p>
           </div>
-          <div className={styles.description__img}></div>
+          <div className={styles.description__img}>
+            <img src={titleImage} alt="Image" />
+          </div>
         </div>
         <div className={styles.content}>
           {isLoadingDataError ? (
@@ -89,14 +106,6 @@ const TradesTracker = () => {
               <div className={styles.tableWrapper}>
                 <div className={styles.title}>
                   <h1>My Trades</h1>
-                  <MyButton
-                    onClick={() => {
-                      setIsOpenModal(true);
-                      setTrade(undefined);
-                    }}
-                  >
-                    New Trade
-                  </MyButton>
                 </div>
                 <table>
                   <thead>
@@ -125,6 +134,14 @@ const TradesTracker = () => {
                 </table>
               </div>
               <div className={styles.functional__ride}>
+                <MyButton
+                  onClick={() => {
+                    setIsOpenModal(true);
+                    setTrade(undefined);
+                  }}
+                >
+                  New Trade
+                </MyButton>
                 <div className={styles.tradesInformationsDiagram}>
                   <div className="flex justify-between items-center">
                     <h2 className="font-bold">Trade Analysis</h2>
@@ -171,6 +188,7 @@ const TradesTracker = () => {
             </div>
           )}
         </div>
+        <Pagination countPages={countPages} onChangePage={setCurrentPage} />
       </div>
       {isOpenModel && (
         <TradeModal setIsOpenModal={setIsOpenModal} trade={trade} />

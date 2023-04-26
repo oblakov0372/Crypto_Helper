@@ -57,7 +57,7 @@ const TradeRow: React.FC<Props> = ({
 
   return (
     <tr>
-      <td>{coinName}</td>
+      <td className="font-extrabold">{coinName.toUpperCase()}</td>
       <td className="font-bold">{positionSize}$</td>
       <td>{stopLossPercent}%</td>
       <td>{takeProfitPercent}%</td>

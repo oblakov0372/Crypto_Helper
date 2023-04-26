@@ -6,6 +6,12 @@
     &__text {
       width: 70%;
     }
+
+    &__img {
+      img {
+        width: 200px;
+      }
+    }
     .title {
       display: flex;
       align-items: flex-end;
@@ -87,10 +93,16 @@
       }
     }
     &__ride {
+      margin-top: 45px;
       width: 18%;
       text-align: center;
 
+      a {
+        width: 100%;
+      }
+
       .tradesInformationsDiagram {
+        margin-top: 20px;
         text-align: left;
         padding: 10px;
         width: 100%;

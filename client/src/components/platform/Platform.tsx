@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Platform.module.scss";
 import { PlatformType } from "../../types/PlatformType";
+import MyButton from "../UI/MyButton/MyButton";
 
 const Platform: React.FC<PlatformType> = ({
   imgLink,
@@ -14,9 +15,9 @@ const Platform: React.FC<PlatformType> = ({
         <div className={styles.left}>
           <h2 className={styles.title}>{title}</h2>
           <p>{description}</p>
-          <a href={link} target="_blank">
+          <MyButton href={link} target="_blank">
             Go to {title.substring(3)}
-          </a>
+          </MyButton>
         </div>
         <div className={styles.right}>
           <img width={150} alt="logo" src={imgLink} />

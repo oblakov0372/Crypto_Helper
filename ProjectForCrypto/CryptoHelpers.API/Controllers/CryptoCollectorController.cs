@@ -57,7 +57,7 @@ namespace CryptoHelpers.API.Controllers
             var countPages = Math.Ceiling((double)values.Count / parameters.PageSize);
 
 
-            if (cryptocurrencies.Count == 0)
+            if (cryptocurrencies?.Count == 0)
             {
                 BadRequest();
             }

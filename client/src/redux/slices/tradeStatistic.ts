@@ -29,7 +29,7 @@ export const TradeStatisticSlice = createSlice({
       );
       state.totalPositivTrades = 0;
       state.trades.forEach((trade) => {
-        if (trade.earnedMoney > 0) {
+        if (trade.earnedMoney >= 0) {
           state.totalPositivTrades += 1;
         }
       });
@@ -37,7 +37,7 @@ export const TradeStatisticSlice = createSlice({
     addTrade(state, action: PayloadAction<TradeFutureType>) {
       state.trades.push(action.payload);
       state.totalTrades += 1;
-      if (action.payload.earnedMoney > 0) {
+      if (action.payload.earnedMoney >= 0) {
         state.totalPositivTrades += 1;
       }
       state.totalEarnedMoney += action.payload.earnedMoney;
@@ -47,7 +47,7 @@ export const TradeStatisticSlice = createSlice({
         (trade) => trade.id !== action.payload.id
       );
       state.totalTrades -= 1;
-      if (action.payload.earnedMoney > 0) {
+      if (action.payload.earnedMoney >= 0) {
         state.totalPositivTrades -= 1;
       }
       state.totalEarnedMoney -= action.payload.earnedMoney;
@@ -61,9 +61,9 @@ export const TradeStatisticSlice = createSlice({
         const oldEarnedMoney = editedTrade.earnedMoney;
         state.trades[tradeIndex] = action.payload;
         const newEarnedMoney = action.payload.earnedMoney;
-        if (oldEarnedMoney > 0 && newEarnedMoney <= 0) {
+        if (oldEarnedMoney >= 0 && newEarnedMoney < 0) {
           state.totalPositivTrades -= 1;
-        } else if (oldEarnedMoney <= 0 && newEarnedMoney > 0) {
+        } else if (oldEarnedMoney < 0 && newEarnedMoney >= 0) {
           state.totalPositivTrades += 1;
         }
         state.totalEarnedMoney = state.trades.reduce(

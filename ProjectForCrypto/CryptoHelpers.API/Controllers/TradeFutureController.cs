@@ -1,6 +1,11 @@
 ﻿using ApplicationService.implementations;
 using ApplicationService.Models.TradeFutureModels;
+using CryptoCollector.API.Models;
+using CryptoCollector.API;
+using CryptoHelpers.API.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
+using ApplicationService.DTOs;
 
 namespace CryptoHelpers.API.Controllers
 {
@@ -9,16 +14,37 @@ namespace CryptoHelpers.API.Controllers
     public class TradeFutureController : ControllerBase
     {
         private readonly ITradeFutureManagementService _tradeFutureManagementService;
-        public TradeFutureController(ITradeFutureManagementService tradeFutureManagementService)
+        private readonly IMemoryCache _memoryCache;
+        public TradeFutureController(ITradeFutureManagementService tradeFutureManagementService,
+                                     IMemoryCache memoryCache)
         {
+            
             _tradeFutureManagementService = tradeFutureManagementService;
+            _memoryCache = memoryCache;
+
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetTrades()
+        public async Task<IActionResult> GetTrades([FromQuery] TradeParameters parameters)
         {
-            var trades = await _tradeFutureManagementService.GetTradesAsync(1);
-            return Ok(trades);
+            if (!_memoryCache.TryGetValue("trades", out List<TradeFutureDto> values))
+            {
+                // If the value is not in the cache, generate it.
+                values = await _tradeFutureManagementService.GetTradesAsync(1);
+
+                // Store the value in the cache for 10 minutes.
+                var cacheEntryOptions = new MemoryCacheEntryOptions()
+                    .SetAbsoluteExpiration(TimeSpan.FromSeconds(3));
+
+                _memoryCache.Set("trades", values, cacheEntryOptions);
+            }
+
+            var trades = values?.Skip(parameters.PageSize * (parameters.PageNumber - 1))
+                                               .Take(parameters.PageSize).ToList();
+
+            var countPages = Math.Ceiling((double)values.Count / parameters.PageSize);
+
+            return Ok(new { trades = trades, countPages = countPages });
         }
         [HttpPost] 
         public async Task<IActionResult> CreateTrade([FromBody] TradeFutureCreateModel model)
