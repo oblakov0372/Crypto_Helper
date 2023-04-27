@@ -1,0 +1,17 @@
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Repository\bin\Debug\net6.0\Repository.deps.json
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Repository\bin\Debug\net6.0\Repository.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Repository\bin\Debug\net6.0\Repository.pdb
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Repository\bin\Debug\net6.0\Data.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Repository\bin\Debug\net6.0\Data.pdb
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Repository\obj\Debug\net6.0\Repository.csproj.AssemblyReference.cache
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Repository\obj\Debug\net6.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Repository\obj\Debug\net6.0\Repository.AssemblyInfoInputs.cache
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Repository\obj\Debug\net6.0\Repository.AssemblyInfo.cs
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Repository\obj\Debug\net6.0\Repository.csproj.CoreCompileInputs.cache
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Repository\obj\Debug\net6.0\Repository.csproj.CopyComplete
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Repository\obj\Debug\net6.0\Repository.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Repository\obj\Debug\net6.0\refint\Repository.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Repository\obj\Debug\net6.0\Repository.pdb
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Repository\obj\Debug\net6.0\ref\Repository.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Repository\bin\Debug\net6.0\Contracts.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Repository\bin\Debug\net6.0\Contracts.pdb

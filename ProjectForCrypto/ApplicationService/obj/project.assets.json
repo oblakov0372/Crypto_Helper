@@ -1047,6 +1047,19 @@
           }
         }
       },
+      "Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Contracts.dll": {}
+        }
+      },
       "Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1059,6 +1072,20 @@
         },
         "runtime": {
           "bin/placeholder/Data.dll": {}
+        }
+      },
+      "Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Contracts": "1.0.0",
+          "Data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Repository.dll": {}
         }
       }
     }
@@ -3230,15 +3257,26 @@
         "version.txt"
       ]
     },
+    "Contracts/1.0.0": {
+      "type": "project",
+      "path": "../Contracts/Contracts.csproj",
+      "msbuildProject": "../Contracts/Contracts.csproj"
+    },
     "Data/1.0.0": {
       "type": "project",
       "path": "../Data/Data.csproj",
       "msbuildProject": "../Data/Data.csproj"
+    },
+    "Repository/1.0.0": {
+      "type": "project",
+      "path": "../Repository/Repository.csproj",
+      "msbuildProject": "../Repository/Repository.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Data >= 1.0.0"
+      "Data >= 1.0.0",
+      "Repository >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -3270,6 +3308,9 @@
           "projectReferences": {
             "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Data\\Data.csproj": {
               "projectPath": "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Data\\Data.csproj"
+            },
+            "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Repository\\Repository.csproj": {
+              "projectPath": "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Repository\\Repository.csproj"
             }
           }
         }

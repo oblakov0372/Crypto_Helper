@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v6.0": {
       "ApplicationService/1.0.0": {
         "dependencies": {
-          "Data": "1.0.0"
+          "Data": "1.0.0",
+          "Repository": "1.0.0"
         },
         "runtime": {
           "ApplicationService.dll": {}
@@ -610,6 +611,14 @@
           }
         }
       },
+      "Contracts/1.0.0": {
+        "dependencies": {
+          "Data": "1.0.0"
+        },
+        "runtime": {
+          "Contracts.dll": {}
+        }
+      },
       "Data/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "7.0.5",
@@ -617,6 +626,15 @@
         },
         "runtime": {
           "Data.dll": {}
+        }
+      },
+      "Repository/1.0.0": {
+        "dependencies": {
+          "Contracts": "1.0.0",
+          "Data": "1.0.0"
+        },
+        "runtime": {
+          "Repository.dll": {}
         }
       }
     }
@@ -1061,7 +1079,17 @@
       "path": "system.windows.extensions/5.0.0",
       "hashPath": "system.windows.extensions.5.0.0.nupkg.sha512"
     },
+    "Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Repository/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

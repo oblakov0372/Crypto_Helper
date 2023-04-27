@@ -12,8 +12,8 @@ namespace Data.Entities
     {
         public string CoinName { get; set; } = string.Empty;
         public decimal PositionSize { get; set; }
-        public decimal StopLossPercent { get; set; }
-        public decimal TakeProfitPercent { get; set; }
+        public decimal Risk { get; set; }
+        public decimal Reward { get; set; }
         public decimal EarnedMoney { get; set; }
         public string TradingViewImgLink { get; set; } = string.Empty;
         public int UserId { get; set; }

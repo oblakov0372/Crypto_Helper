@@ -1,22 +1,21 @@
 ﻿using ApplicationService.DTOs;
 using ApplicationService.Models.TradeFutureModels;
-using Data.Context;
+using Contracts;
 using Data.Entities;
-using Microsoft.EntityFrameworkCore;
 
 namespace ApplicationService.implementations
 {
     public class TradeFutureManagementService : ITradeFutureManagementService
     {
-        private readonly ProjectDBContext _context;
-        public TradeFutureManagementService(ProjectDBContext context)
+        private readonly IUnitOfWork _unitOfWork;
+        public TradeFutureManagementService(IUnitOfWork unitOfWork)
         {
-            _context = context;
+            _unitOfWork = unitOfWork;
         }
         public async Task<List<TradeFutureDto>> GetTradesAsync(int userId)
         {
             var trades = new List<TradeFutureDto>();
-            foreach (var trade in await _context.Trades.Where(t => t.UserId == 1).ToListAsync())
+            foreach (var trade in _unitOfWork.TradeFutures.FindAsync(t => t.UserId == userId))
             {
                 trades.Add(new TradeFutureDto
                 {
@@ -24,8 +23,8 @@ namespace ApplicationService.implementations
                     CoinName = trade.CoinName,
                     EarnedMoney = trade.EarnedMoney,
                     PositionSize = trade.PositionSize,
-                    StopLossPercent = trade.StopLossPercent,
-                    TakeProfitPercent = trade.TakeProfitPercent,
+                    Risk = trade.Risk,
+                    Reward = trade.Reward,
                     TradingViewImgLink = trade.TradingViewImgLink,
                 });
             }
@@ -38,18 +37,18 @@ namespace ApplicationService.implementations
                 CoinName = model.CoinName,
                 EarnedMoney = model.EarnedMoney,
                 PositionSize = model.PositionSize,
-                StopLossPercent = model.StopLossPercent,
-                TakeProfitPercent = model.TakeProfitPercent,
+                Risk = model.Risk,
+                Reward = model.Reward,
                 TradingViewImgLink = model.TradingViewImgLink,
                 UserId = 1,
                 CreatedBy = 1,
                 CreatedOn = DateTime.Now
             };
-            
+
             try
             {
-                await _context.Trades.AddAsync(trade);
-                await _context.SaveChangesAsync();
+                await _unitOfWork.TradeFutures.AddAsync(trade);
+                await _unitOfWork.SaveAsync();
                 return true;
             }
             catch
@@ -60,19 +59,20 @@ namespace ApplicationService.implementations
 
         public async Task<bool> UpdateTradeAsync(TradeFutureUpdateModel model)
         {
-            var tradeForChange = _context.Trades.Where(t => t.Id == model.Id).FirstOrDefault();
+            TradeFutureEntity tradeForChange = _unitOfWork.TradeFutures.FindAsync(t => t.Id == model.Id).FirstOrDefault();
+
 
             if (tradeForChange == null)
                 return false;
 
             tradeForChange.CoinName = model.CoinName;
             tradeForChange.PositionSize = model.PositionSize;
-            tradeForChange.StopLossPercent = model.StopLossPercent;
-            tradeForChange.TakeProfitPercent = model.TakeProfitPercent;
+            tradeForChange.Risk = model.Risk;
+            tradeForChange.Reward = model.Reward;
             tradeForChange.EarnedMoney = model.EarnedMoney;
             tradeForChange.TradingViewImgLink = model.TradingViewImgLink;
-            _context.Trades.Update(tradeForChange);
-            await _context.SaveChangesAsync();
+            _unitOfWork.TradeFutures.Update(tradeForChange);
+            await _unitOfWork.SaveAsync();
             return true;
 
         }
@@ -82,8 +82,8 @@ namespace ApplicationService.implementations
             try
             {
                 var trade = new TradeFutureEntity() { Id = id };
-                _context.Trades.Remove(trade);
-                await _context.SaveChangesAsync();
+                _unitOfWork.TradeFutures.Remove(trade);
+                await _unitOfWork.SaveAsync();
                 return true;
             }
             catch

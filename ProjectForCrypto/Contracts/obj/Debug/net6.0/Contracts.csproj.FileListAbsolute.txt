@@ -1,0 +1,15 @@
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Contracts\bin\Debug\net6.0\Contracts.deps.json
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Contracts\bin\Debug\net6.0\Contracts.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Contracts\bin\Debug\net6.0\Contracts.pdb
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Contracts\bin\Debug\net6.0\Data.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Contracts\bin\Debug\net6.0\Data.pdb
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Contracts\obj\Debug\net6.0\Contracts.csproj.AssemblyReference.cache
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Contracts\obj\Debug\net6.0\Contracts.GeneratedMSBuildEditorConfig.editorconfig
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Contracts\obj\Debug\net6.0\Contracts.AssemblyInfoInputs.cache
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Contracts\obj\Debug\net6.0\Contracts.AssemblyInfo.cs
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Contracts\obj\Debug\net6.0\Contracts.csproj.CoreCompileInputs.cache
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Contracts\obj\Debug\net6.0\Contracts.csproj.CopyComplete
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Contracts\obj\Debug\net6.0\Contracts.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Contracts\obj\Debug\net6.0\refint\Contracts.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Contracts\obj\Debug\net6.0\Contracts.pdb
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\Contracts\obj\Debug\net6.0\ref\Contracts.dll

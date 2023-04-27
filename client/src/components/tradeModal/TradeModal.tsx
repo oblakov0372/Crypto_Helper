@@ -18,12 +18,8 @@ const TradeModal: React.FC<Props> = ({ trade, setIsOpenModal }) => {
   const [positionSize, setPositionSize] = useState<number>(
     trade?.positionSize || 0
   );
-  const [stopLossPercent, setStopLossPercent] = useState<number>(
-    trade?.stopLossPercent || 0
-  );
-  const [takeProfitPercent, setTakeProfitPercent] = useState<number>(
-    trade?.takeProfitPercent || 0
-  );
+  const [risk, setRisk] = useState<number>(trade?.risk || 0);
+  const [reward, setReward] = useState<number>(trade?.reward || 0);
   const [earnedMoney, setEarnedMoney] = useState<number>(
     trade?.earnedMoney || 0
   );
@@ -41,8 +37,8 @@ const TradeModal: React.FC<Props> = ({ trade, setIsOpenModal }) => {
         id,
         coinName: symbol,
         positionSize,
-        stopLossPercent,
-        takeProfitPercent,
+        risk,
+        reward,
         earnedMoney,
         tradingViewImgLink,
       };
@@ -53,8 +49,8 @@ const TradeModal: React.FC<Props> = ({ trade, setIsOpenModal }) => {
           id: id,
           coinName: symbol,
           positionSize: positionSize,
-          stopLossPercent: stopLossPercent,
-          takeProfitPercent: takeProfitPercent,
+          risk: risk,
+          reward: reward,
           earnedMoney: earnedMoney,
           tradingViewImgLink: tradingViewImgLink,
         }
@@ -103,21 +99,21 @@ const TradeModal: React.FC<Props> = ({ trade, setIsOpenModal }) => {
               />
             </div>
             <div className={styles.formGroup}>
-              <label htmlFor="stopLossPercent">Stop Loss %</label>
+              <label htmlFor="risk">Risk %</label>
               <input
                 type="number"
                 id="stopLossPercent"
-                value={stopLossPercent}
-                onChange={(e) => setStopLossPercent(Number(e.target.value))}
+                value={risk}
+                onChange={(e) => setRisk(Number(e.target.value))}
               />
             </div>
             <div className={styles.formGroup}>
-              <label htmlFor="takeProfitPercent">Take Profit %</label>
+              <label htmlFor="reward">Reward %</label>
               <input
                 type="number"
                 id="takeProfitPercent"
-                value={takeProfitPercent}
-                onChange={(e) => setTakeProfitPercent(Number(e.target.value))}
+                value={reward}
+                onChange={(e) => setReward(Number(e.target.value))}
               />
             </div>
             <div className={styles.formGroup}>
@@ -133,7 +129,7 @@ const TradeModal: React.FC<Props> = ({ trade, setIsOpenModal }) => {
               <label htmlFor="tradingViewImglink">Trading View Link</label>
               <input
                 type="text"
-                id="earnedMoney"
+                id="tradingViewImgLink"
                 value={tradingViewImgLink}
                 onChange={(e) => setTradingViewImgLink(e.target.value)}
               />

@@ -64,9 +64,9 @@ const TradesTracker = () => {
   ];
   const tableColumns: Column[] = [
     { name: "Symbol", orderBy: "symbol" },
-    { name: "Position Size$", orderBy: "positionSize" },
-    { name: "Stop Loss%", orderBy: "stopLossPercent" },
-    { name: "Take Profit%", orderBy: "takeProfitPercent" },
+    { name: "Position Size", orderBy: "positionSize" },
+    { name: "Risk", orderBy: "risk" },
+    { name: "Reward", orderBy: "reward" },
     { name: "Earned Money", orderBy: "earnedMoney" },
     { name: "Trading View", orderBy: "symbol" },
   ];
@@ -122,8 +122,8 @@ const TradesTracker = () => {
                         id={trade.id}
                         coinName={trade.coinName}
                         positionSize={trade.positionSize}
-                        stopLossPercent={trade.stopLossPercent}
-                        takeProfitPercent={trade.takeProfitPercent}
+                        risk={trade.risk}
+                        reward={trade.reward}
                         tradingViewImgLink={trade.tradingViewImgLink}
                         earnedMoney={trade.earnedMoney}
                         setIsOpenModal={setIsOpenModal}

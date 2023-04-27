@@ -1151,13 +1151,27 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Data": "1.0.0"
+          "Data": "1.0.0",
+          "Repository": "1.0.0"
         },
         "compile": {
           "bin/placeholder/ApplicationService.dll": {}
         },
         "runtime": {
           "bin/placeholder/ApplicationService.dll": {}
+        }
+      },
+      "Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Contracts.dll": {}
         }
       },
       "CryptoCollector.API/1.0.0": {
@@ -1186,6 +1200,20 @@
         },
         "runtime": {
           "bin/placeholder/Data.dll": {}
+        }
+      },
+      "Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Contracts": "1.0.0",
+          "Data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Repository.dll": {}
         }
       }
     }
@@ -3517,6 +3545,11 @@
       "path": "../ApplicationService/ApplicationService.csproj",
       "msbuildProject": "../ApplicationService/ApplicationService.csproj"
     },
+    "Contracts/1.0.0": {
+      "type": "project",
+      "path": "../Contracts/Contracts.csproj",
+      "msbuildProject": "../Contracts/Contracts.csproj"
+    },
     "CryptoCollector.API/1.0.0": {
       "type": "project",
       "path": "../CryptoCollector.API/CryptoCollector.API.csproj",
@@ -3526,6 +3559,11 @@
       "type": "project",
       "path": "../Data/Data.csproj",
       "msbuildProject": "../Data/Data.csproj"
+    },
+    "Repository/1.0.0": {
+      "type": "project",
+      "path": "../Repository/Repository.csproj",
+      "msbuildProject": "../Repository/Repository.csproj"
     }
   },
   "projectFileDependencyGroups": {

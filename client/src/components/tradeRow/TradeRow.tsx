@@ -10,8 +10,8 @@ type Props = {
   id: number;
   coinName: string;
   positionSize: number;
-  stopLossPercent: number;
-  takeProfitPercent: number;
+  risk: number;
+  reward: number;
   earnedMoney: number;
   tradingViewImgLink: string;
   setIsOpenModal: (value: boolean) => void;
@@ -20,8 +20,8 @@ type Props = {
 const TradeRow: React.FC<Props> = ({
   id,
   coinName,
-  stopLossPercent,
-  takeProfitPercent,
+  risk,
+  reward,
   positionSize,
   earnedMoney,
   tradingViewImgLink,
@@ -43,8 +43,8 @@ const TradeRow: React.FC<Props> = ({
         deleteTrade({
           id,
           coinName,
-          stopLossPercent,
-          takeProfitPercent,
+          risk,
+          reward,
           positionSize,
           earnedMoney,
           tradingViewImgLink: tradingViewImgLink,
@@ -59,8 +59,8 @@ const TradeRow: React.FC<Props> = ({
     <tr>
       <td className="font-extrabold">{coinName.toUpperCase()}</td>
       <td className="font-bold">{positionSize}$</td>
-      <td>{stopLossPercent}%</td>
-      <td>{takeProfitPercent}%</td>
+      <td>{risk}%</td>
+      <td>{reward}%</td>
       <td style={earnedMoney < 0 ? { color: "red" } : { color: "green" }}>
         {earnedMoney}$
       </td>
@@ -84,8 +84,8 @@ const TradeRow: React.FC<Props> = ({
             setTrade({
               id,
               coinName,
-              stopLossPercent,
-              takeProfitPercent,
+              risk,
+              reward,
               positionSize,
               earnedMoney,
               tradingViewImgLink: tradingViewImgLink,

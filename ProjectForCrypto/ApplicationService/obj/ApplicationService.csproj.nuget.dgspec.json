@@ -30,6 +30,68 @@
             "projectReferences": {
               "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Data\\Data.csproj": {
                 "projectPath": "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Data\\Data.csproj"
+              },
+              "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Repository\\Repository.csproj": {
+                "projectPath": "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Repository\\Repository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.407\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Contracts\\Contracts.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Contracts\\Contracts.csproj",
+        "projectName": "Contracts",
+        "projectPath": "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Contracts\\Contracts.csproj",
+        "packagesPath": "C:\\Users\\Demian\\.nuget\\packages\\",
+        "outputPath": "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Contracts\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Demian\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Data\\Data.csproj": {
+                "projectPath": "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Data\\Data.csproj"
               }
             }
           }
@@ -120,6 +182,68 @@
               "version": "[7.0.5, )"
             }
           },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.407\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Repository\\Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Repository\\Repository.csproj",
+        "projectName": "Repository",
+        "projectPath": "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Repository\\Repository.csproj",
+        "packagesPath": "C:\\Users\\Demian\\.nuget\\packages\\",
+        "outputPath": "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Demian\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Contracts\\Contracts.csproj": {
+                "projectPath": "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Contracts\\Contracts.csproj"
+              },
+              "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Data\\Data.csproj": {
+                "projectPath": "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Data\\Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
           "imports": [
             "net461",
             "net462",

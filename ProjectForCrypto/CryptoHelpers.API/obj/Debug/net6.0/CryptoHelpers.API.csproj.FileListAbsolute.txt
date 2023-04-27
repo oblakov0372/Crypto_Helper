@@ -17,7 +17,6 @@ D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\obj\Debug\net6.
 D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\obj\Debug\net6.0\CryptoHelpers.API.AssemblyInfoInputs.cache
 D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\obj\Debug\net6.0\CryptoHelpers.API.AssemblyInfo.cs
 D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\obj\Debug\net6.0\CryptoHelpers.API.csproj.CoreCompileInputs.cache
-D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\obj\Debug\net6.0\CryptoHelpers.API.MvcApplicationPartsAssemblyInfo.cs
 D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\obj\Debug\net6.0\CryptoHelpers.API.MvcApplicationPartsAssemblyInfo.cache
 D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\obj\Debug\net6.0\staticwebassets.build.json
 D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\obj\Debug\net6.0\staticwebassets.development.json
@@ -79,3 +78,7 @@ D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\bin\Debug\net6.
 D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\bin\Debug\net6.0\Data.dll
 D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\bin\Debug\net6.0\ApplicationService.pdb
 D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\bin\Debug\net6.0\Data.pdb
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\bin\Debug\net6.0\Repository.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\bin\Debug\net6.0\Repository.pdb
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\bin\Debug\net6.0\Contracts.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\bin\Debug\net6.0\Contracts.pdb

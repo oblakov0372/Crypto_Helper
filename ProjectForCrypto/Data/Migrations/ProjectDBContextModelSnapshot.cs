@@ -46,10 +46,10 @@ namespace Data.Migrations
                     b.Property<decimal>("PositionSize")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("StopLossPercent")
+                    b.Property<decimal>("Reward")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("TakeProfitPercent")
+                    b.Property<decimal>("Risk")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("TradingViewImgLink")

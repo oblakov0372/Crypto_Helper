@@ -13,3 +13,7 @@ D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\obj\Debug\net6
 D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\obj\Debug\net6.0\refint\ApplicationService.dll
 D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\obj\Debug\net6.0\ApplicationService.pdb
 D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\obj\Debug\net6.0\ref\ApplicationService.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\bin\Debug\net6.0\Repository.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\bin\Debug\net6.0\Repository.pdb
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\bin\Debug\net6.0\Contracts.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\bin\Debug\net6.0\Contracts.pdb
