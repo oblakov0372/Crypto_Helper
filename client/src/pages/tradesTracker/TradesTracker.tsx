@@ -153,7 +153,7 @@ const TradesTracker = () => {
                           : "text-red-500")
                       }
                     >
-                      {totalEarnedMoney}$
+                      {totalEarnedMoney.toFixed(2)}$
                     </p>
                   </div>
                   <div className="flex items-center">

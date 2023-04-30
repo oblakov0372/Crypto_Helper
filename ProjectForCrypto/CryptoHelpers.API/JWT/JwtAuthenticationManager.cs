@@ -25,7 +25,7 @@ namespace CryptoHelpers.API.JWT
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                new Claim("id", user.Id.ToString()),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.UserName),
                 new Claim(ClaimTypes.Email, user.Email),
                 }),

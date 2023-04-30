@@ -6,7 +6,6 @@ type RequestOptions = {
   queryParams?: QueryParams;
   method?: RequestMethod;
 };
-
 export async function anonymRequest(
   url: string,
   params: RequestOptions = {},
@@ -31,7 +30,7 @@ export async function authenticatedRequest(
   params: RequestOptions = {},
   body?: Record<string, unknown> | number
 ) {
-  const jwtToken = localStorage.getItem("jwtToken");
+  const jwtToken = localStorage.getItem("jwt");
   const axiosConfig: AxiosRequestConfig = {
     method: params.method ?? "get",
     url: `https://localhost:7261/api/${url}`,
@@ -42,13 +41,10 @@ export async function authenticatedRequest(
       "Content-Type": "application/json",
     },
   };
-
   const response = await axios(axiosConfig);
-
   if (response.status === 401) {
-    // auto logout if 401 response returned from api
-    //logout();
-    //location.reload(true);
+    localStorage.removeItem("jwt");
+    location.reload();
   }
 
   return response;

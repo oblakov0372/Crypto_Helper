@@ -1,36 +1,38 @@
 ﻿using ApplicationService.implementations;
 using ApplicationService.Models.TradeFutureModels;
-using CryptoCollector.API.Models;
-using CryptoCollector.API;
 using CryptoHelpers.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using ApplicationService.DTOs;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace CryptoHelpers.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class TradeFutureController : ControllerBase
+    public class TradeFutureController : BaseContoller
     {
         private readonly ITradeFutureManagementService _tradeFutureManagementService;
         private readonly IMemoryCache _memoryCache;
         public TradeFutureController(ITradeFutureManagementService tradeFutureManagementService,
                                      IMemoryCache memoryCache)
         {
-            
+
             _tradeFutureManagementService = tradeFutureManagementService;
             _memoryCache = memoryCache;
 
         }
-
         [HttpGet]
         public async Task<IActionResult> GetTrades([FromQuery] TradeParameters parameters)
         {
+            int id = GetUserId();
+
             if (!_memoryCache.TryGetValue("trades", out List<TradeFutureDto> values))
             {
                 // If the value is not in the cache, generate it.
-                values = await _tradeFutureManagementService.GetTradesAsync(1);
+                values = await _tradeFutureManagementService.GetTradesAsync(id);
 
                 // Store the value in the cache for 10 minutes.
                 var cacheEntryOptions = new MemoryCacheEntryOptions()
@@ -46,10 +48,11 @@ namespace CryptoHelpers.API.Controllers
 
             return Ok(new { trades = trades, countPages = countPages });
         }
-        [HttpPost] 
+        [HttpPost]
         public async Task<IActionResult> CreateTrade([FromBody] TradeFutureCreateModel model)
         {
-            var result = await _tradeFutureManagementService.CreateTradeAsync(model);
+            int userId = GetUserId();
+            var result = await _tradeFutureManagementService.CreateTradeAsync(model,userId);
             if (result)
                 return Ok("Trade was created");
 

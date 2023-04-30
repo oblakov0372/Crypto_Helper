@@ -30,7 +30,7 @@ namespace ApplicationService.implementations
             }
             return trades;
         }
-        public async Task<bool> CreateTradeAsync(TradeFutureCreateModel model)
+        public async Task<bool> CreateTradeAsync(TradeFutureCreateModel model, int userId)
         {
             var trade = new TradeFutureEntity()
             {
@@ -40,8 +40,8 @@ namespace ApplicationService.implementations
                 Risk = model.Risk,
                 Reward = model.Reward,
                 TradingViewImgLink = model.TradingViewImgLink,
-                UserId = 1,
-                CreatedBy = 1,
+                UserId = userId,
+                CreatedBy = userId,
                 CreatedOn = DateTime.Now
             };
 

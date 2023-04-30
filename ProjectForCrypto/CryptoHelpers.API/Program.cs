@@ -3,7 +3,6 @@ using Contracts;
 using CryptoHelpers.API.JWT;
 using Data.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Repository;
 using System.Text;
