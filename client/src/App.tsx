@@ -7,6 +7,8 @@ import Cryptocurrencies from "./pages/cryptocurrencies/Cryptocurrencies";
 import TradesTracker from "./pages/tradesTracker/TradesTracker";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
+import Login from "./pages/login/Login";
+import Registration from "./pages/registration/Registration";
 
 const App = () => {
   return (
@@ -20,6 +22,8 @@ const App = () => {
               <Route path="/platforms" element={<Platforms />} />
               <Route path="/cryptocurrencies" element={<Cryptocurrencies />} />
               <Route path="/tradesTracker" element={<TradesTracker />} />
+              <Route path="/login" element={<Login />}></Route>
+              <Route path="/registration" element={<Registration />}></Route>
             </Routes>
           </div>
         </div>

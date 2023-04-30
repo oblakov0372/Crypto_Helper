@@ -5,7 +5,13 @@ import { useState } from "react";
 import DropDownMenu from "../Helpers/dropDownMenu/DropDownMenu";
 import { Link } from "react-router-dom";
 import { ServiceType } from "../../types/ServiceType";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 const Header = () => {
+  const isLoggedIn = useSelector(
+    (state: RootState) => state.authSlice.isLoggedIn
+  );
+
   const [isDropDownServicesOpen, setIsDropDownServicesOpen] =
     useState<boolean>(false);
 
@@ -38,13 +44,15 @@ const Header = () => {
             >
               <ul>
                 {services.map((service: ServiceType, index: number) => (
-                  <Link
-                    onClick={() => setIsDropDownServicesOpen(false)}
-                    key={index}
-                    to={service.link}
-                  >
-                    <li>{service.name}</li>
-                  </Link>
+                  <li>
+                    <Link
+                      onClick={() => setIsDropDownServicesOpen(false)}
+                      key={index}
+                      to={service.link}
+                    >
+                      {service.name}
+                    </Link>
+                  </li>
                 ))}
               </ul>
             </DropDownMenu>
@@ -53,19 +61,30 @@ const Header = () => {
       </div>
       <div className={styles.header__right}>
         <ul>
-          <li>
-            <DropDownMenu
-              isMenuOpen={isDropDownAccountOpen}
-              setIsMenuOpen={setIsDropDownAccountOpen}
-              title="Account"
-            >
-              <ul>
-                <Link to={"/profile"}>
-                  <li>Profile</li>
-                </Link>
-              </ul>
-            </DropDownMenu>
-          </li>
+          {isLoggedIn ? (
+            <li>
+              <DropDownMenu
+                isMenuOpen={isDropDownAccountOpen}
+                setIsMenuOpen={setIsDropDownAccountOpen}
+                title="Account"
+              >
+                <ul>
+                  <>
+                    <li onClick={() => setIsDropDownAccountOpen(false)}>
+                      <Link to={"/profile"}>Profile</Link>
+                    </li>
+                    <li onClick={() => setIsDropDownAccountOpen(false)}>
+                      <a href="">Logout</a>
+                    </li>
+                  </>
+                </ul>
+              </DropDownMenu>
+            </li>
+          ) : (
+            <li>
+              <Link to={"/login"}>Login</Link>
+            </li>
+          )}
         </ul>
       </div>
     </header>
