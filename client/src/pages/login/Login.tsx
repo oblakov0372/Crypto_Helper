@@ -1,11 +1,39 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Route, useNavigate } from "react-router-dom";
 import styles from "./Login.module.scss";
+import { anonymRequest } from "../../utils/Request";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/slices/auth";
+type loginType = {
+  email: string;
+  password: string;
+};
 
 const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  const submit = async () => {
+    const data: loginType = {
+      email: email,
+      password: password,
+    };
+
+    try {
+      const response = await anonymRequest(
+        "User/login",
+        { method: "post" },
+        data
+      );
+      dispatch(login(response.data));
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -54,7 +82,13 @@ const Login = () => {
               Show Password
             </label>{" "}
           </div>
-          <button className={styles.button}>Log in</button>
+          <button
+            type="button"
+            onClick={() => submit()}
+            className={styles.button}
+          >
+            Log in
+          </button>
         </form>
       </div>
     </div>

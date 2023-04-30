@@ -6,9 +6,11 @@ import Home from "./pages/home/Home";
 import Cryptocurrencies from "./pages/cryptocurrencies/Cryptocurrencies";
 import TradesTracker from "./pages/tradesTracker/TradesTracker";
 import { store } from "./redux/store";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import Login from "./pages/login/Login";
 import Registration from "./pages/registration/Registration";
+import { useEffect } from "react";
+import { login } from "./redux/slices/auth";
 
 const App = () => {
   return (

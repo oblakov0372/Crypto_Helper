@@ -1,16 +1,23 @@
 import styles from "./Header.module.scss";
 import logo from "../../assets/img/logo_symbol_transparent.png";
 import telegramPng from "../../assets/icons/telegram.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DropDownMenu from "../Helpers/dropDownMenu/DropDownMenu";
 import { Link } from "react-router-dom";
 import { ServiceType } from "../../types/ServiceType";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+import { login, logout } from "../../redux/slices/auth";
 const Header = () => {
+  const dispatch = useDispatch();
   const isLoggedIn = useSelector(
     (state: RootState) => state.authSlice.isLoggedIn
   );
+
+  const onClickLogout = () => {
+    setIsDropDownAccountOpen(false);
+    dispatch(logout());
+  };
 
   const [isDropDownServicesOpen, setIsDropDownServicesOpen] =
     useState<boolean>(false);
@@ -22,6 +29,14 @@ const Header = () => {
     { link: "/cryptocurrencies", name: "Cryptocurrencies" },
     { link: "/tradesTracker", name: "Trades Tracker" },
   ];
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      console.log(123);
+      dispatch(login(token));
+    }
+  }, []);
 
   return (
     <header className={styles.header}>
@@ -73,8 +88,8 @@ const Header = () => {
                     <li onClick={() => setIsDropDownAccountOpen(false)}>
                       <Link to={"/profile"}>Profile</Link>
                     </li>
-                    <li onClick={() => setIsDropDownAccountOpen(false)}>
-                      <a href="">Logout</a>
+                    <li onClick={() => onClickLogout()}>
+                      <a>Logout</a>
                     </li>
                   </>
                 </ul>
