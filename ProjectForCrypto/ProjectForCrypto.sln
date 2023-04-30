@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationService", "Appli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{BDF3BA21-E6D8-45C5-AAD5-463226999DCE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{39CDF30A-B322-4F6F-A205-828D27F20705}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "Contracts\Contracts.csproj", "{39CDF30A-B322-4F6F-A205-828D27F20705}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

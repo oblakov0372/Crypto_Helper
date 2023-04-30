@@ -10,9 +10,10 @@ namespace Repository
         {
             _context = context;
             TradeFutures = new TradeFutureRepository(_context);
+            User = new UserRepository(_context);
         }
         public ITradeFutureRepository TradeFutures { get; private set; }
-
+        public IUserRepository User { get; private set; }
 
         public async Task SaveAsync()
         {

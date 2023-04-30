@@ -9,6 +9,7 @@ namespace Contracts
     public interface IUnitOfWork: IDisposable
     {
         ITradeFutureRepository TradeFutures { get; }
+        IUserRepository User { get; }
         Task SaveAsync();
     }
 }

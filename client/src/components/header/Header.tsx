@@ -9,6 +9,9 @@ const Header = () => {
   const [isDropDownServicesOpen, setIsDropDownServicesOpen] =
     useState<boolean>(false);
 
+  const [isDropDownAccountOpen, setIsDropDownAccountOpen] =
+    useState<boolean>(false);
+
   const services: ServiceType[] = [
     { link: "/cryptocurrencies", name: "Cryptocurrencies" },
     { link: "/tradesTracker", name: "Trades Tracker" },
@@ -48,12 +51,20 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      <div className={styles.socialMedia}>
+      <div className={styles.header__right}>
         <ul>
           <li>
-            <a href="https://t.me/CryptoOblakov_0372" target="_blank">
-              <img src={telegramPng} alt="telegramChanel" width={30} />
-            </a>
+            <DropDownMenu
+              isMenuOpen={isDropDownAccountOpen}
+              setIsMenuOpen={setIsDropDownAccountOpen}
+              title="Account"
+            >
+              <ul>
+                <Link to={"/profile"}>
+                  <li>Profile</li>
+                </Link>
+              </ul>
+            </DropDownMenu>
           </li>
         </ul>
       </div>

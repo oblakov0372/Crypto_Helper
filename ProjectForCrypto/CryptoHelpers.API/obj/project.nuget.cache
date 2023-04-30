@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Eiu2JiDrZBmaQ8sf/RLMzai2pVzs8w5Z6H5St9mU5BCUcinCyfc+oh/IbXP/hZhVWQCL3d6St/3h2/TncwJOFQ==",
+  "dgSpecHash": "VoaoN/fRkRTnCfB1zd4ladxn5L5hbR3OI8JRNY+gJKp10QTMLVAuefX2O23JvhAQ9yQY/s6vkqFu1QSH0UERWQ==",
   "success": true,
   "projectFilePath": "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\CryptoHelpers.API\\CryptoHelpers.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Demian\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Demian\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
+    "C:\\Users\\Demian\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.16\\microsoft.aspnetcore.authentication.jwtbearer.6.0.16.nupkg.sha512",
     "C:\\Users\\Demian\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Demian\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Demian\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.1\\microsoft.data.sqlclient.5.0.1.nupkg.sha512",
