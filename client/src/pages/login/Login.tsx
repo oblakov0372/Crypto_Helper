@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Link, Route, useNavigate } from "react-router-dom";
 import styles from "./Login.module.scss";
-import { anonymRequest } from "../../utils/Request";
+import { anonymRequest, toErrorMessage } from "../../utils/Request";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/slices/auth";
+import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
 type loginType = {
   email: string;
   password: string;
@@ -12,6 +13,9 @@ type loginType = {
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [isSubmiting, setIsSubmiting] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -23,15 +27,24 @@ const Login = () => {
     };
 
     try {
+      setIsSubmiting(true);
       const response = await anonymRequest(
         "User/login",
         { method: "post" },
         data
       );
       dispatch(login(response.data));
+      setIsSubmiting(false);
+      setIsError(false);
       navigate("/");
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      setIsError(true);
+      if (error.code === "ERR_NETWORK" || error.response.status === 401) {
+        setErrorMessage(toErrorMessage(error));
+      } else if (error.response.status === 400) {
+        setErrorMessage("Invalid email or password");
+      }
+      setIsSubmiting(false);
     }
   };
 
@@ -71,6 +84,9 @@ const Login = () => {
               required
             />
           </div>
+          {isError && (
+            <h2 className="text-red-600 mb-3 font-extrabold">{errorMessage}</h2>
+          )}
           <div className={styles.inputWrapper}>
             <input
               id="show-password"
@@ -91,6 +107,13 @@ const Login = () => {
           </button>
         </form>
       </div>
+      {isSubmiting && (
+        <div className={styles.submitingWrapper}>
+          <div className={styles.loadingSpinner}>
+            <LoadingSpinner />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

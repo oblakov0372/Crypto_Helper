@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { TradeFutureType } from "../../types/TradeFutureType";
 import { setTrades } from "../../redux/slices/tradeStatistic";
-import { authenticatedRequest } from "../../utils/Request";
+import { authenticatedRequest, toErrorMessage } from "../../utils/Request";
 import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
 import TradeModal from "../../components/tradeModal/TradeModal";
 import MyButton from "../../components/UI/MyButton/MyButton";
@@ -43,11 +43,7 @@ const TradesTracker = () => {
         setCountPages(response.data.countPages);
         setIsLoadingData(false);
       } catch (error: any) {
-        if (error.response.status === 401) {
-          setErrorMessage("You need to authenticate to use this service.");
-        } else if (error.response.status === 400) {
-          setErrorMessage("Failed to load data. Please try again later.");
-        }
+        setErrorMessage(toErrorMessage(error));
         setIsLoadingData(false);
         setIsLoadingDataError(true);
       }
