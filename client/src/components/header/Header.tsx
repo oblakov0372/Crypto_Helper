@@ -3,12 +3,13 @@ import logo from "../../assets/img/logo_symbol_transparent.png";
 import telegramPng from "../../assets/icons/telegram.png";
 import { useEffect, useState } from "react";
 import DropDownMenu from "../Helpers/dropDownMenu/DropDownMenu";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ServiceType } from "../../types/ServiceType";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { login, logout } from "../../redux/slices/auth";
 const Header = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(
     (state: RootState) => state.authSlice.isLoggedIn
@@ -17,6 +18,7 @@ const Header = () => {
   const onClickLogout = () => {
     setIsDropDownAccountOpen(false);
     dispatch(logout());
+    navigate("/login");
   };
 
   const [isDropDownServicesOpen, setIsDropDownServicesOpen] =

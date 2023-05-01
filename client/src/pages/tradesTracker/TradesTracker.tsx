@@ -13,11 +13,13 @@ import TradeModal from "../../components/tradeModal/TradeModal";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import { PieChart } from "react-minimal-pie-chart";
 import Pagination from "../../components/pagination/Pagination";
+import { AxiosError } from "axios";
 
 const TradesTracker = () => {
   //#region useStates
   const [isLoadingData, setIsLoadingData] = useState<boolean>(true);
   const [isLoadingDataError, setIsLoadingDataError] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const [isOpenModel, setIsOpenModal] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [countPages, setCountPages] = useState<number>(1);
@@ -40,9 +42,12 @@ const TradesTracker = () => {
         dispatch(setTrades(response.data.trades));
         setCountPages(response.data.countPages);
         setIsLoadingData(false);
-        console.log("data");
-      } catch (error) {
-        console.error(error);
+      } catch (error: any) {
+        if (error.response.status === 401) {
+          setErrorMessage("You need to authenticate to use this service.");
+        } else if (error.response.status === 400) {
+          setErrorMessage("Failed to load data. Please try again later.");
+        }
         setIsLoadingData(false);
         setIsLoadingDataError(true);
       }
@@ -96,9 +101,7 @@ const TradesTracker = () => {
         </div>
         <div className={styles.content}>
           {isLoadingDataError ? (
-            <h2 className="error">
-              Failed to load data. Please try again later.
-            </h2>
+            <h2 className="error">{errorMessage}</h2>
           ) : isLoadingData ? (
             <LoadingSpinner />
           ) : (

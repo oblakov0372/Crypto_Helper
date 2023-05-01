@@ -1,5 +1,17 @@
 import axios, { AxiosRequestConfig } from "axios";
 
+axios.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    if (error.response && error.response.status === 401) {
+      localStorage.removeItem("jwt");
+    }
+    return Promise.reject(error);
+  }
+);
+
 type QueryParams = Record<string, any>;
 type RequestMethod = "get" | "post" | "put" | "delete";
 type RequestOptions = {
@@ -42,10 +54,6 @@ export async function authenticatedRequest(
     },
   };
   const response = await axios(axiosConfig);
-  if (response.status === 401) {
-    localStorage.removeItem("jwt");
-    location.reload();
-  }
 
   return response;
 }
