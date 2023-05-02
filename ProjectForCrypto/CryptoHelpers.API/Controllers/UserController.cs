@@ -30,7 +30,7 @@ namespace CryptoHelpers.API.Controllers
         {
             string jwtToken = await _userManagementService.Authorization(authenticateModel);
             if (jwtToken == string.Empty)
-                return BadRequest(new { message = "password or email is incorrect" });
+                return BadRequest(new { message = "Invalid email or password" });
 
             return Ok(jwtToken);
         }

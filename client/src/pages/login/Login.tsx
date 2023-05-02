@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FormEventHandler, MouseEvent, useState } from "react";
 import { Link, Route, useNavigate } from "react-router-dom";
 import styles from "./Login.module.scss";
 import { anonymRequest, toErrorMessage } from "../../utils/Request";
@@ -20,7 +20,8 @@ const Login = () => {
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const submit = async () => {
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
     const data: loginType = {
       email: email,
       password: password,
@@ -61,7 +62,7 @@ const Login = () => {
       </div>
       <div className={styles.login}>
         <h1 className={styles.title}>Log in</h1>
-        <form className={styles.form}>
+        <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.inputWrapper}>
             <input
               id="email"
@@ -98,11 +99,7 @@ const Login = () => {
               Show Password
             </label>{" "}
           </div>
-          <button
-            type="button"
-            onClick={() => submit()}
-            className={styles.button}
-          >
+          <button type="submit" className={styles.button}>
             Log in
           </button>
         </form>
