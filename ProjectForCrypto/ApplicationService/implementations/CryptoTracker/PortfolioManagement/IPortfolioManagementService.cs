@@ -1,4 +1,4 @@
-﻿using ApplicationService.DTOs;
+﻿using ApplicationService.DTOs.CryptoTracker;
 using ApplicationService.Models.CryptoTracker.PortfolioModels;
 using ApplicationService.Models.TradeFutureModels;
 

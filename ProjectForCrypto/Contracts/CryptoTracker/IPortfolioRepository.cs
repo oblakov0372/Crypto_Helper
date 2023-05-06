@@ -1,6 +1,6 @@
-﻿using Data.Entities;
+﻿using Data.Entities.CryptoTracker;
 
-namespace Contracts
+namespace Contracts.CryptoTracker
 {
     public interface IPortfolioRepository : IGenericRepository<PortfolioEntity>
     {

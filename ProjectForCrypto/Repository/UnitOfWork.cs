@@ -1,5 +1,7 @@
 ﻿using Contracts;
+using Contracts.CryptoTracker;
 using Data.Context;
+using Repository.CryptoTracker;
 
 namespace Repository
 {
@@ -12,10 +14,12 @@ namespace Repository
             TradeFutures = new TradeFutureRepository(_context);
             Users = new UserRepository(_context);
             Portfolios = new PortfolioRepository(_context);
+            Transactions = new TransactionRepository(_context);
         }
         public ITradeFutureRepository TradeFutures { get; private set; }
         public IUserRepository Users { get; private set; }
         public IPortfolioRepository Portfolios { get; private set; }
+        public ITransactionRepository Transactions { get; private set; }
 
         public async Task SaveAsync()
         {

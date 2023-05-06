@@ -28,7 +28,7 @@ namespace CryptoCollector.API
                     MarketCap = Convert.ToDecimal(item["total_supply"]),
                     PercentChange24H = Math.Round(Convert.ToDecimal(item["quote"]["USD"]["percent_change_24h"]), 3),
                     VolumeChange24H = Math.Round(Convert.ToDecimal(item["quote"]["USD"]["volume_change_24h"]), 3),
-                }) ;
+                });
             }
             return cryptocurrencies;
         }

@@ -1,4 +1,4 @@
-﻿using ApplicationService.DTOs;
+﻿using ApplicationService.DTOs.CryptoTracker;
 using ApplicationService.implementations.CryptoTracker.Portfolio;
 using ApplicationService.Models.CryptoTracker.PortfolioModels;
 using Microsoft.AspNetCore.Authorization;

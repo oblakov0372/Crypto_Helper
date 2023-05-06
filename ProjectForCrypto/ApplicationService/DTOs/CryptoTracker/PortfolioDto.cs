@@ -1,5 +1,4 @@
-﻿
-namespace ApplicationService.DTOs
+﻿namespace ApplicationService.DTOs.CryptoTracker
 {
     public class PortfolioDto
     {

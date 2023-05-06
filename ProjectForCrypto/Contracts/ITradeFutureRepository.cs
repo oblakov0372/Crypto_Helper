@@ -2,7 +2,7 @@
 
 namespace Contracts
 {
-    public interface ITradeFutureRepository:IGenericRepository<TradeFutureEntity>
+    public interface ITradeFutureRepository : IGenericRepository<TradeFutureEntity>
     {
     }
 }

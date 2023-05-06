@@ -1,7 +1,7 @@
-﻿using ApplicationService.DTOs;
+﻿using ApplicationService.DTOs.CryptoTracker;
 using ApplicationService.Models.CryptoTracker.PortfolioModels;
 using Contracts;
-using Data.Entities;
+using Data.Entities.CryptoTracker;
 using Microsoft.Identity.Client;
 
 namespace ApplicationService.implementations.CryptoTracker.Portfolio

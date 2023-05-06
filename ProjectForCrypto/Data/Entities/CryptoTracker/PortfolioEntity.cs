@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Data.Entities
+namespace Data.Entities.CryptoTracker
 {
-    public class PortfolioEntity:BaseEntity
+    public class PortfolioEntity : BaseEntity
     {
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
