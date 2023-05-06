@@ -7,13 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { TradeFutureType } from "../../types/TradeFutureType";
 import { setTrades } from "../../redux/slices/tradeStatistic";
-import { authenticatedRequest, toErrorMessage } from "../../utils/Request";
+import { authenticatedRequest } from "../../utils/Request";
 import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
 import TradeModal from "../../components/tradeModal/TradeModal";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import { PieChart } from "react-minimal-pie-chart";
 import Pagination from "../../components/pagination/Pagination";
 import { AxiosError } from "axios";
+import { toErrorMessage } from "../../utils/Error";
 
 const TradesTracker = () => {
   //#region useStates

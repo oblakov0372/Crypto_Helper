@@ -1,15 +1,19 @@
-import React, { ReactNode, AnchorHTMLAttributes } from "react";
+import React, {
+  ReactNode,
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+} from "react";
 import styles from "./MyButton.module.scss";
 
 type MyButtonProps = {
   children: ReactNode;
-} & AnchorHTMLAttributes<HTMLAnchorElement>;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const MyButton: React.FC<MyButtonProps> = ({ children, ...props }) => {
   return (
-    <a {...props} className={styles.button}>
+    <button {...props} className={styles.button}>
       {children}
-    </a>
+    </button>
   );
 };
 

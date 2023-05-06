@@ -30,7 +30,8 @@ const TradeModal: React.FC<Props> = ({ trade, setIsOpenModal }) => {
 
   const isEdit = !!trade;
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
     try {
       const method = isEdit ? "put" : "post";
       const trade = {
@@ -79,7 +80,7 @@ const TradeModal: React.FC<Props> = ({ trade, setIsOpenModal }) => {
           </button>
         </div>
         <div className={styles.modalBody}>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className={styles.formGroup}>
               <label htmlFor="symbol">Symbol</label>
               <input
@@ -87,6 +88,7 @@ const TradeModal: React.FC<Props> = ({ trade, setIsOpenModal }) => {
                 id="symbol"
                 value={symbol}
                 onChange={(e) => setSymbol(e.target.value)}
+                required
               />
             </div>
             <div className={styles.formGroup}>
@@ -96,6 +98,7 @@ const TradeModal: React.FC<Props> = ({ trade, setIsOpenModal }) => {
                 id="positionSize"
                 value={positionSize}
                 onChange={(e) => setPositionSize(Number(e.target.value))}
+                required
               />
             </div>
             <div className={styles.formGroup}>
@@ -134,7 +137,7 @@ const TradeModal: React.FC<Props> = ({ trade, setIsOpenModal }) => {
                 onChange={(e) => setTradingViewImgLink(e.target.value)}
               />
             </div>
-            <MyButton onClick={() => handleSubmit()}>{submitText}</MyButton>
+            <MyButton type="submit">{submitText}</MyButton>
           </form>
         </div>
       </div>

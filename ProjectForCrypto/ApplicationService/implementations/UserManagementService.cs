@@ -1,12 +1,8 @@
 ﻿using ApplicationService.Models.UserModels;
 using Contracts;
 using Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ApplicationService.implementations
 {
@@ -23,7 +19,7 @@ namespace ApplicationService.implementations
 
         public async Task<bool> Registration(RegistrationModel registrationModel)
         {
-            UserEntity user = _unitOfWork.User.FindAsync(u => u.Email == registrationModel.Email).FirstOrDefault();
+            UserEntity user = _unitOfWork.Users.FindAsync(u => u.Email == registrationModel.Email).FirstOrDefault();
             if (user != null)
                 return false;
 
@@ -32,7 +28,7 @@ namespace ApplicationService.implementations
             user.Email = registrationModel.Email;
             user.PasswordHash = passwordHash;
 
-            await _unitOfWork.User.AddAsync(user);
+            await _unitOfWork.Users.AddAsync(user);
             await _unitOfWork.SaveAsync();
 
             return true;
@@ -41,7 +37,7 @@ namespace ApplicationService.implementations
         public async Task<string> Authorization(AuthenticateModel model)
         {
             string passwordHash = HashPassword(model.Password);            
-            UserEntity user= await _unitOfWork.User.GetByEmailAndHashPassword(model.Email, passwordHash);
+            UserEntity user= await _unitOfWork.Users.GetByEmailAndHashPassword(model.Email, passwordHash);
             if (user == null)
                 return string.Empty;
             string jwtToken = _jwtAuthenticationManager.GenerateToken(user);

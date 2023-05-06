@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using ApplicationService.DTOs;
 using Microsoft.AspNetCore.Authorization;
-using System.Security.Claims;
 
 namespace CryptoHelpers.API.Controllers
 {

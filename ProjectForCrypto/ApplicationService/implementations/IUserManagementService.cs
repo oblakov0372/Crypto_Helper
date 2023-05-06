@@ -1,6 +1,4 @@
-﻿
-using ApplicationService.Models.UserModels;
-using Data.Entities;
+﻿using ApplicationService.Models.UserModels;
 
 namespace ApplicationService.implementations
 {

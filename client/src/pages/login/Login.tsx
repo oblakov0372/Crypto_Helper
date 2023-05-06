@@ -1,10 +1,11 @@
 import React, { FormEventHandler, MouseEvent, useState } from "react";
 import { Link, Route, useNavigate } from "react-router-dom";
 import styles from "./Login.module.scss";
-import { anonymRequest, toErrorMessage } from "../../utils/Request";
+import { anonymRequest } from "../../utils/Request";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/slices/auth";
 import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
+import { toErrorMessage } from "../../utils/Error";
 type loginType = {
   email: string;
   password: string;

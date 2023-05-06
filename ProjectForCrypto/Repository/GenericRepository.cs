@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace Repository
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public abstract class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly ProjectDBContext _context;
         public GenericRepository(ProjectDBContext context)

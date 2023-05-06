@@ -1,6 +1,5 @@
 ﻿using ApplicationService.implementations;
 using ApplicationService.Models.UserModels;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CryptoHelpers.API.Controllers

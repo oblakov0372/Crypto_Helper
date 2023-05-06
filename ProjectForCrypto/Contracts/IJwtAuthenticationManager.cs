@@ -1,6 +1,4 @@
-﻿
-using Data.Entities;
-using System.Security.Claims;
+﻿using Data.Entities;
 
 namespace Contracts
 {

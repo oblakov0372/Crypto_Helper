@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "./Registration.module.scss";
 import { useDispatch } from "react-redux";
 import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
-import { anonymRequest, toErrorMessage } from "../../utils/Request";
+import { anonymRequest } from "../../utils/Request";
+import { toErrorMessage } from "../../utils/Error";
 
 type registerType = {
   email: string;

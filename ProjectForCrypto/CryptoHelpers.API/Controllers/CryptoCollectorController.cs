@@ -63,5 +63,6 @@ namespace CryptoHelpers.API.Controllers
             }
             return Ok(new { cryptocurrencies = cryptocurrencies, countPages = countPages });
         }
+
     }
 }
