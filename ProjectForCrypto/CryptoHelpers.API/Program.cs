@@ -1,4 +1,6 @@
-using ApplicationService.implementations;
+using ApplicationService.implementations.CryptoTracker.Portfolio;
+using ApplicationService.implementations.TradeFututreManagement;
+using ApplicationService.implementations.UserManagement;
 using Contracts;
 using CryptoHelpers.API.JWT;
 using Data.Context;
@@ -50,8 +52,8 @@ builder.Services.AddScoped<IJwtAuthenticationManager, JwtAuthenticationManager>(
 builder.Services.AddScoped<ProjectDBContext>();
 builder.Services.AddScoped<ITradeFutureManagementService, TradeFutureManagementService>();
 builder.Services.AddScoped<IUserManagementService, UserManagementService>();
+builder.Services.AddScoped<IPortfolioManagementService,PortfolioManagementService>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
-
 
 #endregion
 

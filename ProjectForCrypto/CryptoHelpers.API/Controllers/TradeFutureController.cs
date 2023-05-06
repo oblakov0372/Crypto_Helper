@@ -1,10 +1,10 @@
-﻿using ApplicationService.implementations;
-using ApplicationService.Models.TradeFutureModels;
+﻿using ApplicationService.Models.TradeFutureModels;
 using CryptoHelpers.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using ApplicationService.DTOs;
 using Microsoft.AspNetCore.Authorization;
+using ApplicationService.implementations.TradeFututreManagement;
 
 namespace CryptoHelpers.API.Controllers
 {
@@ -60,7 +60,8 @@ namespace CryptoHelpers.API.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateTrade([FromBody] TradeFutureUpdateModel model)
         {
-            var result = await _tradeFutureManagementService.UpdateTradeAsync(model);
+            int userId = GetUserId();
+            var result = await _tradeFutureManagementService.UpdateTradeAsync(model,userId);
             if (result)
                 return Ok("Trade was updated");
 

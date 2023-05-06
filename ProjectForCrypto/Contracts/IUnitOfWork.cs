@@ -5,7 +5,7 @@ namespace Contracts
     {
         ITradeFutureRepository TradeFutures { get; }
         IUserRepository Users { get; }
-        IPortfolioRepository PortfolioRepositories { get; }
+        IPortfolioRepository Portfolios { get; }
         Task SaveAsync();
     }
 }

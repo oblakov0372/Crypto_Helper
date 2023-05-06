@@ -1,4 +1,4 @@
-﻿using ApplicationService.implementations;
+﻿using ApplicationService.implementations.UserManagement;
 using ApplicationService.Models.UserModels;
 using Microsoft.AspNetCore.Mvc;
 

@@ -4,7 +4,7 @@ using Data.Entities;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace ApplicationService.implementations
+namespace ApplicationService.implementations.UserManagement
 {
     public class UserManagementService : IUserManagementService
     {
@@ -36,8 +36,8 @@ namespace ApplicationService.implementations
 
         public async Task<string> Authorization(AuthenticateModel model)
         {
-            string passwordHash = HashPassword(model.Password);            
-            UserEntity user= await _unitOfWork.Users.GetByEmailAndHashPassword(model.Email, passwordHash);
+            string passwordHash = HashPassword(model.Password);
+            UserEntity user = await _unitOfWork.Users.GetByEmailAndHashPassword(model.Email, passwordHash);
             if (user == null)
                 return string.Empty;
             string jwtToken = _jwtAuthenticationManager.GenerateToken(user);

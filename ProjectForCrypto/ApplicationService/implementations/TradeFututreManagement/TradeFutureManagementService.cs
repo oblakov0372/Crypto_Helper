@@ -3,7 +3,7 @@ using ApplicationService.Models.TradeFutureModels;
 using Contracts;
 using Data.Entities;
 
-namespace ApplicationService.implementations
+namespace ApplicationService.implementations.TradeFututreManagement
 {
     public class TradeFutureManagementService : ITradeFutureManagementService
     {
@@ -57,7 +57,7 @@ namespace ApplicationService.implementations
             }
         }
 
-        public async Task<bool> UpdateTradeAsync(TradeFutureUpdateModel model)
+        public async Task<bool> UpdateTradeAsync(TradeFutureUpdateModel model,int userId)
         {
             TradeFutureEntity tradeForChange = _unitOfWork.TradeFutures.FindAsync(t => t.Id == model.Id).FirstOrDefault();
 
@@ -71,9 +71,18 @@ namespace ApplicationService.implementations
             tradeForChange.Reward = model.Reward;
             tradeForChange.EarnedMoney = model.EarnedMoney;
             tradeForChange.TradingViewImgLink = model.TradingViewImgLink;
-            _unitOfWork.TradeFutures.Update(tradeForChange);
-            await _unitOfWork.SaveAsync();
-            return true;
+            tradeForChange.UpdateBy = userId;
+            tradeForChange.UpdatedOn = DateTime.Now;
+            try
+            {
+                _unitOfWork.TradeFutures.Update(tradeForChange);
+                await _unitOfWork.SaveAsync();
+                return true;
+            }
+            catch 
+            {
+                return false;
+            }
 
         }
 
