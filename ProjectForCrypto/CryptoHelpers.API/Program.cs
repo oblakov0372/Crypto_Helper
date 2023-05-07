@@ -1,4 +1,5 @@
 using ApplicationService.implementations.CryptoTracker.Portfolio;
+using ApplicationService.implementations.CryptoTracker.PortfolioTokenManagement;
 using ApplicationService.implementations.CryptoTracker.TransactionManagement;
 using ApplicationService.implementations.TradeFututreManagement;
 using ApplicationService.implementations.UserManagement;
@@ -55,6 +56,7 @@ builder.Services.AddScoped<ITradeFutureManagementService, TradeFutureManagementS
 builder.Services.AddScoped<IUserManagementService, UserManagementService>();
 builder.Services.AddScoped<IPortfolioManagementService,PortfolioManagementService>();
 builder.Services.AddScoped<ITransactionManagementService, TransactionManagementService>();
+builder.Services.AddScoped<IPortfolioTokenManagementService,PortfolioTokenManagementService>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 #endregion
