@@ -1,13 +1,13 @@
 ﻿using ApplicationService.DTOs.CryptoTracker;
 using ApplicationService.implementations.CryptoTracker.PortfolioTokenManagement;
-using Data.Entities.CryptoTracker;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CryptoHelpers.API.Controllers.CryptoTracker
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PortfolioTokenController : BaseContoller
     {
         private readonly IPortfolioTokenManagementService _portfolioTokenManagementService;

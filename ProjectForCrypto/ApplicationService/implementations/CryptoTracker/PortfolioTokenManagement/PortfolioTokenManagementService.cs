@@ -75,6 +75,7 @@ namespace ApplicationService.implementations.CryptoTracker.PortfolioTokenManagem
             if(model.Count < 0)
             {
                 await DeletePortfolioTokenAsync(model.Id);
+                await _unitOfWork.SaveAsync();
                 return true;
             }
             portfolioTokenForChange.CoinSymbol = model.CoinSymbol;

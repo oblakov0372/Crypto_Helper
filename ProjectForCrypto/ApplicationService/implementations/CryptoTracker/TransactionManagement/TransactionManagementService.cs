@@ -100,6 +100,7 @@ namespace ApplicationService.implementations.CryptoTracker.TransactionManagement
             if (transactionForChange == null)
                 return false;
 
+
             PortfolioTokenEntity portfolioToken = _portfolioTokenManagementService
                                                  .GetPortfolioTokenByUserIdCoinSymbolAndPortfolioId(userId, model.CoinSymbol, model.PortfolioId);
 
@@ -111,6 +112,17 @@ namespace ApplicationService.implementations.CryptoTracker.TransactionManagement
                     Count = model.Count,
                     PortfolioId = model.PortfolioId
                 }, userId);
+                if (transactionForChange.CoinSymbol != model.CoinSymbol)
+                {
+                    PortfolioTokenEntity oldPortfolioToken = _portfolioTokenManagementService
+                                                 .GetPortfolioTokenByUserIdCoinSymbolAndPortfolioId(userId, transactionForChange.CoinSymbol, model.PortfolioId);
+                    await _portfolioTokenManagementService.UpdatePortfolioTokenAsync(new PortfolioTokenUpdateModel
+                    {
+                        Id = oldPortfolioToken.Id,
+                        CoinSymbol = oldPortfolioToken.CoinSymbol,
+                        Count = oldPortfolioToken.Count - transactionForChange.Count,
+                    }, userId);
+                }
             }
             else
             {
@@ -118,8 +130,17 @@ namespace ApplicationService.implementations.CryptoTracker.TransactionManagement
                 {
                     Id = portfolioToken.Id,
                     CoinSymbol = model.CoinSymbol,
-                    Count = portfolioToken.Count - model.Count
+                    Count = portfolioToken.Count + model.Count
                 }, userId);
+
+                PortfolioTokenEntity oldPortfolioToken = _portfolioTokenManagementService
+                                                 .GetPortfolioTokenByUserIdCoinSymbolAndPortfolioId(userId, transactionForChange.CoinSymbol, model.PortfolioId);
+                await _portfolioTokenManagementService.UpdatePortfolioTokenAsync(new PortfolioTokenUpdateModel
+                {
+                    Id = oldPortfolioToken.Id,
+                    CoinSymbol = oldPortfolioToken.CoinSymbol,
+                    Count = oldPortfolioToken.Count - transactionForChange.Count
+                },userId);
             }
 
             transactionForChange.CoinSymbol = model.CoinSymbol;
