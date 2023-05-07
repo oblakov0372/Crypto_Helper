@@ -1,4 +1,6 @@
 ﻿using ApplicationService.DTOs.CryptoTracker;
+using ApplicationService.implementations.CryptoTracker.PortfolioTokenManagement;
+using ApplicationService.Models.CryptoTracker.PortfolioTokenModels;
 using ApplicationService.Models.CryptoTracker.TransactionModels;
 using Contracts;
 using Data.Entities.CryptoTracker;
@@ -8,10 +10,14 @@ namespace ApplicationService.implementations.CryptoTracker.TransactionManagement
     public class TransactionManagementService : ITransactionManagementService
     {
         private readonly IUnitOfWork _unitOfWork;
-        public TransactionManagementService(IUnitOfWork unitOfWork) 
+        private readonly IPortfolioTokenManagementService _portfolioTokenManagementService;
+        public TransactionManagementService(IUnitOfWork unitOfWork,
+                                            IPortfolioTokenManagementService portfolioTokenManagementService) 
         {
             _unitOfWork = unitOfWork;
+            _portfolioTokenManagementService = portfolioTokenManagementService;
         }
+
         public async Task<List<TransactionDto>> GetTransactionsAsync(int userId)
         {
             List<TransactionDto> transactions = new List<TransactionDto>();
@@ -22,7 +28,6 @@ namespace ApplicationService.implementations.CryptoTracker.TransactionManagement
                     Id = transaction.Id,
                     CoinSymbol = transaction.CoinSymbol,
                     Count = transaction.Count,
-                    PortfolioId = transaction.PortfolioId,
                     Price = transaction.Price,
                     TransactionType = transaction.TransactionType
                 });
@@ -39,7 +44,6 @@ namespace ApplicationService.implementations.CryptoTracker.TransactionManagement
                     Id = transaction.Id,
                     CoinSymbol = transaction.CoinSymbol,
                     Count = transaction.Count,
-                    PortfolioId = transaction.PortfolioId,
                     Price = transaction.Price,
                     TransactionType = transaction.TransactionType
                 });
@@ -48,6 +52,26 @@ namespace ApplicationService.implementations.CryptoTracker.TransactionManagement
         }
         public async Task<bool> CreateTransactionAsync(TransactionCreateModel model, int userId)
         {
+            PortfolioTokenEntity portfolioToken = _portfolioTokenManagementService
+                                                  .GetPortfolioTokenByUserIdCoinSymbolAndPortfolioId(userId, model.CoinSymbol,model.PortfolioId);
+            if (portfolioToken == null)
+            {
+                await _portfolioTokenManagementService.CreatePortfolioTokenAsync(new PortfolioTokenCreateModel
+                {
+                    CoinSymbol = model.CoinSymbol,
+                    Count = model.Count,
+                    PortfolioId = model.PortfolioId
+                },userId);
+            }
+            else
+            {
+                await _portfolioTokenManagementService.UpdatePortfolioTokenAsync(new PortfolioTokenUpdateModel
+                {
+                    Id = portfolioToken.Id,
+                    CoinSymbol = model.CoinSymbol,
+                    Count = portfolioToken.Count + model.Count
+                },userId);
+            }
             TransactionEntity transaction = new TransactionEntity()
             {
                 UserId = userId,
@@ -77,7 +101,6 @@ namespace ApplicationService.implementations.CryptoTracker.TransactionManagement
                 return false;
             transactionForChange.CoinSymbol = model.CoinSymbol;
             transactionForChange.Count = model.Count;
-            transactionForChange.PortfolioId = model.PortfolioId;
             transactionForChange.Price = model.Price;
             transactionForChange.TransactionType = model.TransactionType;
             transactionForChange.UpdatedOn = DateTime.Now;

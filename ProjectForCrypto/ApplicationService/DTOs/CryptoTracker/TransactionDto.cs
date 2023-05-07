@@ -9,6 +9,5 @@ namespace ApplicationService.DTOs.CryptoTracker
         public TransactionType TransactionType { get; set; }
         public decimal? Count { get; set; }
         public decimal? Price { get; set; }
-        public int PortfolioId { get; set; }
     }
 }

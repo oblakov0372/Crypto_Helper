@@ -68,6 +68,10 @@ namespace Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("CoinSymbol")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal?>("Count")
                         .HasColumnType("decimal(18,2)");
 
@@ -77,12 +81,8 @@ namespace Data.Migrations
                     b.Property<DateTime?>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("PordfolioId")
+                    b.Property<int>("PortfolioId")
                         .HasColumnType("int");
-
-                    b.Property<string>("TokenSymbol")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UpdateBy")
                         .HasColumnType("int");
@@ -95,14 +95,14 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PordfolioId");
+                    b.HasIndex("PortfolioId");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("PortfolioTokens");
                 });
 
-            modelBuilder.Entity("Data.Entities.CryptoTracker.TrasnactionEntity", b =>
+            modelBuilder.Entity("Data.Entities.CryptoTracker.TransactionEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -252,7 +252,7 @@ namespace Data.Migrations
                 {
                     b.HasOne("Data.Entities.CryptoTracker.PortfolioEntity", "Portfolio")
                         .WithMany()
-                        .HasForeignKey("PordfolioId")
+                        .HasForeignKey("PortfolioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -267,7 +267,7 @@ namespace Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Data.Entities.CryptoTracker.TrasnactionEntity", b =>
+            modelBuilder.Entity("Data.Entities.CryptoTracker.TransactionEntity", b =>
                 {
                     b.HasOne("Data.Entities.CryptoTracker.PortfolioEntity", "Portfolio")
                         .WithMany()

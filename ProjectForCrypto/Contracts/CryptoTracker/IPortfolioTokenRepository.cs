@@ -2,7 +2,7 @@
 
 namespace Contracts.CryptoTracker
 {
-    public interface IPortfolioTokenRepository:IGenericRepository<PortfolioTokenEntity>
+    public interface IPortfolioTokenRepository : IGenericRepository<PortfolioTokenEntity>
     {
     }
 }
