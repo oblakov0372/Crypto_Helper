@@ -96,7 +96,7 @@ const TradesTracker = () => {
             <img src={titleImage} alt="Image" />
           </div>
         </div>
-        <div className={styles.content}>
+        <div>
           {isLoadingDataError ? (
             <h2 className="error">{errorMessage}</h2>
           ) : isLoadingData ? (

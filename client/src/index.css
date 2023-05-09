@@ -24,3 +24,14 @@ a {
   cursor: pointer;
   text-decoration: none;
 }
+::-webkit-scrollbar-track {
+  background-color: #fff; /*Цвет скролла*/
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px; /*Закругление ползунка*/
+  background-color: #000; /*Цвет ползунка*/
+}
+::-webkit-scrollbar {
+  width: 10px; /*Толщина скролла*/
+}

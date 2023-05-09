@@ -5,8 +5,13 @@ axios.interceptors.response.use(
     return response;
   },
   function (error) {
-    if (error.response && error.response.status === 401) {
+    if (
+      error.response &&
+      error.response.status === 401 &&
+      localStorage.getItem("jwt")
+    ) {
       localStorage.removeItem("jwt");
+      location.reload();
     }
     return Promise.reject(error);
   }

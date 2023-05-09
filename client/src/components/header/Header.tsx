@@ -30,6 +30,7 @@ const Header = () => {
   const services: ServiceType[] = [
     { link: "/cryptocurrencies", name: "Cryptocurrencies" },
     { link: "/tradesTracker", name: "Trades Tracker" },
+    { link: "/cryptoTracker", name: "Crypto Tracker" },
   ];
 
   useEffect(() => {

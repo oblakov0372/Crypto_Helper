@@ -11,6 +11,7 @@ import Login from "./pages/login/Login";
 import Registration from "./pages/registration/Registration";
 import { useEffect } from "react";
 import { login } from "./redux/slices/auth";
+import CryptoTracker from "./pages/cryptoTracker/CryptoTracker";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
               <Route path="/platforms" element={<Platforms />} />
               <Route path="/cryptocurrencies" element={<Cryptocurrencies />} />
               <Route path="/tradesTracker" element={<TradesTracker />} />
+              <Route path="/cryptoTracker" element={<CryptoTracker />} />
               <Route path="/login" element={<Login />}></Route>
               <Route path="/registration" element={<Registration />}></Route>
             </Routes>

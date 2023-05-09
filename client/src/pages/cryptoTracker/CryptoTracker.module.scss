@@ -1,0 +1,96 @@
+.content {
+  .description {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    &__text {
+      width: 70%;
+    }
+    .title {
+      display: flex;
+      align-items: flex-end;
+      h1 {
+        color: #d0ed96;
+        font-weight: 900;
+        font-size: 28px;
+        margin-right: 10px;
+      }
+    }
+    p {
+      font-size: 18px;
+      line-height: 1.5;
+      color: #bcbcbc;
+      margin-top: 30px;
+    }
+  }
+  .functional {
+    margin-top: 20px;
+
+    .portfolioFunctional {
+      width: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .portfoliosPanel {
+        width: 80%;
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+        border-radius: 10px;
+
+        button {
+          padding: 10px;
+          margin-right: 10px;
+          background-color: #4caf50;
+          border: none;
+          color: white;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .tableWrapper {
+      width: 80%;
+
+      .title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h1 {
+          color: #d0ed96;
+          font-size: 28px;
+        }
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 16px;
+        font-weight: 500;
+
+        th {
+          text-align: left;
+          color: #8698aa;
+          font-weight: 600;
+          padding: 12px 8px;
+          cursor: pointer;
+          transition: all ease-in-out 0.2s;
+          &:hover {
+            background-color: #c7c7c7;
+          }
+        }
+        td {
+          padding: 12px 8px;
+          border-top: 1px solid #eaeef2;
+          color: #dcdcdc;
+          div {
+            display: grid;
+          }
+        }
+      }
+    }
+  }
+}
