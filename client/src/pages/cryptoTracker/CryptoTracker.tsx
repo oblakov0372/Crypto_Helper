@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./CryptoTracker.module.scss";
 import image from "../../assets/img/картинка 1.png";
 import { Column } from "../../types/Column";
@@ -32,38 +31,59 @@ const CryptoTracker = () => {
       </div>
       <div>
         <div className={styles.functional}>
-          <div className={styles.portfolioFunctional}>
-            <div className={styles.portfoliosPanel}>
-              <button>portfolio 1</button>
-              <button>portfolio 1</button>
-              <button>portfolio 1</button>
-              <button>portfolio 1</button>
-              <button>portfolio 1</button>
+          <div className={styles.functional__left}>
+            <div className={styles.portfolioFunctional}>
+              <div className={styles.portfoliosPanel}>
+                <button>portfolio 1</button>
+                <button>portfolio 1</button>
+                <button>portfolio 1</button>
+                <button>portfolio 1</button>
+                <button>portfolio 1</button>
+              </div>
+              <MyButton>Add Portfolio</MyButton>
             </div>
-            <MyButton>Add Portfolio</MyButton>
+            <div className="mt-5 mb-5 flex justify-between items-center ">
+              <div className="w-full flex justify-between items-center ">
+                <div>
+                  <p className="text-2xl text-yellow-100">
+                    ActivePortfolioName
+                  </p>
+                  <div>
+                    <p className="text-gray-300 text-lg">
+                      Your current balance:
+                    </p>
+                    <span className="font-extrabold text-xl"> 1233.3$</span>
+                  </div>
+                </div>
+                <div>
+                  <MyButton>Add Transaction</MyButton>
+                </div>
+              </div>
+            </div>
+            <div className={styles.tableWrapper}>
+              <table>
+                <thead>
+                  <tr>
+                    {columns.map((column: Column, index: number) => (
+                      <th key={index}>{column.name}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <TokenPortfolioRow
+                    coinSymbol="BTC"
+                    count={100}
+                    countDollars={2000}
+                    name="Bitcoin"
+                    percentChange24H={2}
+                    price={29000}
+                    key={1}
+                  />
+                </tbody>
+              </table>
+            </div>
           </div>
-          <div className={styles.tableWrapper}>
-            <table>
-              <thead>
-                <tr>
-                  {columns.map((column: Column, index: number) => (
-                    <th key={index}>{column.name}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                <TokenPortfolioRow
-                  coinSymbol="BTC"
-                  count={100}
-                  countDollars={2000}
-                  name="Bitcoin"
-                  percentChange24H={2}
-                  price={29000}
-                  key={1}
-                />
-              </tbody>
-            </table>
-          </div>
+          <div className={styles.functional__ride}></div>
         </div>
       </div>
     </div>
