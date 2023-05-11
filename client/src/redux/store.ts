@@ -1,10 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import tradeStatistic from "./slices/tradeStatistic";
+import tradeStatisticSlice from "./slices/tradeStatistic";
 import authSlice from "./slices/auth";
+import portfolioSlice from "./slices/portfolio";
+import portfolioTokenSlice from "./slices/portfolioToken";
 export const store = configureStore({
   reducer: {
-    tradeStatistic,
+    tradeStatisticSlice,
     authSlice,
+    portfolioSlice,
+    portfolioTokenSlice,
   },
 });
 

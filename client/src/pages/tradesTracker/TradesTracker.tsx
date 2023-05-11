@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import styles from "./TradesTracker.module.scss";
 import titleImage from "../../assets/img/Картинка 2.png";
 import { Column } from "../../types/Column";
-import TradeRow from "../../components/tradeRow/TradeRow";
+import TradeRow from "../../components/rows/tradeRow/TradeRow";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { TradeFutureType } from "../../types/TradeFutureType";
 import { setTrades } from "../../redux/slices/tradeStatistic";
 import { authenticatedRequest } from "../../utils/Request";
 import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
-import TradeModal from "../../components/tradeModal/TradeModal";
+import TradeModal from "../../components/modalWindows/tradeModal/TradeModal";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import { PieChart } from "react-minimal-pie-chart";
 import Pagination from "../../components/pagination/Pagination";
@@ -54,7 +54,7 @@ const TradesTracker = () => {
   }, [currentPage]);
 
   const { totalEarnedMoney, totalPositivTrades, totalTrades, trades } =
-    useSelector((state: RootState) => state.tradeStatistic);
+    useSelector((state: RootState) => state.tradeStatisticSlice);
 
   const dataForPieCahrt = [
     { title: "Profit", value: totalPositivTrades, color: "#00ff00" },

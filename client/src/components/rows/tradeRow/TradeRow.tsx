@@ -1,10 +1,10 @@
 import React from "react";
-import { TradeFutureType } from "../../types/TradeFutureType";
-import edit from "../../assets/icons/edit.png";
-import remove from "../../assets/icons/delete.png";
-import { authenticatedRequest } from "../../utils/Request";
+import { TradeFutureType } from "../../../types/TradeFutureType";
+import edit from "../../../assets/icons/edit.png";
+import remove from "../../../assets/icons/delete.png";
+import { authenticatedRequest } from "../../../utils/Request";
 import { useDispatch } from "react-redux";
-import { deleteTrade } from "../../redux/slices/tradeStatistic";
+import { deleteTrade } from "../../../redux/slices/tradeStatistic";
 import styles from "./TradeRow.module.scss";
 type Props = {
   id: number;
