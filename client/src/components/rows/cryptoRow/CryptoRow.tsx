@@ -1,5 +1,5 @@
 import React from "react";
-import { CryptoType } from "../../types/CryptoType";
+import { CryptoType } from "../../../types/CryptoType";
 import styles from "./CryptoRow.modules.scss";
 
 const CryptoRow: React.FC<CryptoType> = ({

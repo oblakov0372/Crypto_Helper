@@ -1,0 +1,19 @@
+.footer {
+  margin-top: 0px;
+  /*Минус Высота футера*/
+  height: 100px;
+  /*Высота футера*/
+}
+.logo {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  img {
+    margin-right: 10px;
+    height: 50px;
+  }
+  h2 {
+    font-size: 26px;
+    font-weight: 700;
+  }
+}

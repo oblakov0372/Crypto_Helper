@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styles from "./TradeModal.module.scss";
-import { authenticatedRequest } from "../../utils/Request";
-import { TradeFutureType } from "../../types/TradeFutureType";
+import { authenticatedRequest } from "../../../utils/Request";
+import { TradeFutureType } from "../../../types/TradeFutureType";
 import { useDispatch } from "react-redux";
-import { addTrade, editTrade } from "../../redux/slices/tradeStatistic";
-import MyButton from "../../components/UI/MyButton/MyButton";
+import { addTrade, editTrade } from "../../../redux/slices/tradeStatistic";
+import MyButton from "../../UI/MyButton/MyButton";
 
 type Props = {
   trade?: TradeFutureType;

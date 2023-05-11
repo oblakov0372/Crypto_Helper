@@ -1,7 +1,7 @@
 import titleImg from "../../assets/icons/increase.png";
 import styles from "./Cryptocurrencies.module.scss";
 import image from "../../assets/img/картинка 4.png";
-import CryptoRow from "../../components/cryptoRow/CryptoRow";
+import CryptoRow from "../../components/rows/cryptoRow/CryptoRow";
 import { useEffect, useState } from "react";
 import { CryptoType } from "../../types/CryptoType";
 import Pagination from "../../components/pagination/Pagination";

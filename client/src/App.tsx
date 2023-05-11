@@ -12,6 +12,7 @@ import Registration from "./pages/registration/Registration";
 import { useEffect } from "react";
 import { login } from "./redux/slices/auth";
 import CryptoTracker from "./pages/cryptoTracker/CryptoTracker";
+import Footer from "./components/footer/Footer";
 
 const App = () => {
   return (
