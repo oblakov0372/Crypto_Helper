@@ -17,3 +17,5 @@ D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\bin\Debug\net6
 D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\bin\Debug\net6.0\Repository.pdb
 D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\bin\Debug\net6.0\Contracts.dll
 D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\bin\Debug\net6.0\Contracts.pdb
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\bin\Debug\net6.0\CryptoCollector.API.dll
+D:\www\ProjectForCryptoDiplom\ProjectForCrypto\ApplicationService\bin\Debug\net6.0\CryptoCollector.API.pdb

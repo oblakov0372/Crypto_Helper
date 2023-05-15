@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { PortfolioType } from "../../types/PortfolioType";
-import { PathRouteProps } from "react-router-dom";
 
 interface PortfolioState {
   portfolios: PortfolioType[];

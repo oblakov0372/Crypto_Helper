@@ -28,6 +28,9 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
+              "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\CryptoCollector.API\\CryptoCollector.API.csproj": {
+                "projectPath": "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\CryptoCollector.API\\CryptoCollector.API.csproj"
+              },
               "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Data\\Data.csproj": {
                 "projectPath": "D:\\www\\ProjectForCryptoDiplom\\ProjectForCrypto\\Data\\Data.csproj"
               },

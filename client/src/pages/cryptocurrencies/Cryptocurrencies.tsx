@@ -6,11 +6,11 @@ import { useEffect, useState } from "react";
 import { CryptoType } from "../../types/CryptoType";
 import Pagination from "../../components/pagination/Pagination";
 import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
-import { Column } from "../../types/Column";
+import { ColumnType } from "../../types/ColumnType";
 import { anonymRequest } from "../../utils/Request";
 
 const Cryptocurrencies = () => {
-  const columns: Column[] = [
+  const columns: ColumnType[] = [
     { name: "#", orderBy: "cmcRank" },
     { name: "Name", orderBy: "name" },
     { name: "Price", orderBy: "price" },
@@ -84,7 +84,7 @@ const Cryptocurrencies = () => {
             <table>
               <thead>
                 <tr>
-                  {columns.map((column: Column) => (
+                  {columns.map((column: ColumnType) => (
                     <th
                       key={column.orderBy}
                       onClick={() => setOrderBy(column.orderBy)}

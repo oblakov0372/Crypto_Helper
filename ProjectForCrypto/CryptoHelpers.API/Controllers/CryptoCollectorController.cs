@@ -9,28 +9,18 @@ namespace CryptoHelpers.API.Controllers
     [ApiController]
     public class CryptoCollectorController : ControllerBase
     {
-        private readonly IMemoryCache _memoryCache;
-        public CryptoCollectorController(IMemoryCache memoryCache)
+        private readonly ICryptoCollectorManagementService _cryptoCollectorManagementService;
+        public CryptoCollectorController(IMemoryCache memoryCache, ICryptoCollectorManagementService cryptoCollectorManagementService)
         {
-            _memoryCache = memoryCache;
+            _cryptoCollectorManagementService = cryptoCollectorManagementService;
         }
         [HttpGet]
         public async Task<IActionResult> GetCryptocurrencies([FromQuery] CryptoParameters parameters)
         {
-            if (!_memoryCache.TryGetValue("Cryptocurrencies", out List<CryptoModel> values))
-            {
-                // If the value is not in the cache, generate it.
-                values = CryptoMethods.GetCryptocurrencies();
-
-                // Store the value in the cache for 10 minutes.
-                var cacheEntryOptions = new MemoryCacheEntryOptions()
-                    .SetAbsoluteExpiration(TimeSpan.FromMinutes(10));
-
-                _memoryCache.Set("Cryptocurrencies", values, cacheEntryOptions);
-            }
+            var values = _cryptoCollectorManagementService.GetCryptocurrencies();
 
             switch (parameters.OrderBy)
-            {    
+            {
                 case "name":
                     values = values.OrderBy(o => o.Name).ToList();
                     break;
@@ -63,6 +53,5 @@ namespace CryptoHelpers.API.Controllers
             }
             return Ok(new { cryptocurrencies = cryptocurrencies, countPages = countPages });
         }
-
     }
 }

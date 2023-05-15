@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./TradesTracker.module.scss";
 import titleImage from "../../assets/img/Картинка 2.png";
-import { Column } from "../../types/Column";
+import { ColumnType } from "../../types/ColumnType";
 import TradeRow from "../../components/rows/tradeRow/TradeRow";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
@@ -64,7 +64,7 @@ const TradesTracker = () => {
       color: "#ff0000",
     },
   ];
-  const tableColumns: Column[] = [
+  const tableColumns: ColumnType[] = [
     { name: "Symbol", orderBy: "symbol" },
     { name: "Position Size", orderBy: "positionSize" },
     { name: "Risk", orderBy: "risk" },
@@ -110,7 +110,7 @@ const TradesTracker = () => {
                 <table>
                   <thead>
                     <tr>
-                      {tableColumns.map((column: Column, index: number) => (
+                      {tableColumns.map((column: ColumnType, index: number) => (
                         <th key={index}>{column.name}</th>
                       ))}
                     </tr>

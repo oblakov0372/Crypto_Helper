@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./TokenPortfolioRow.module.scss";
+import { changeDecimal } from "../../../utils/Utils";
 type TokenPortfolioRowType = {
   name: string;
   coinSymbol: string;
@@ -27,7 +28,7 @@ const TokenPortfolioRow: React.FC<TokenPortfolioRowType> = ({
       </td>
       <td>
         <div>
-          <span>{price}</span>
+          <span>{changeDecimal(price)}$</span>
           <span
             className={percentChange24H > 0 ? "text-green-500" : "text-red-500"}
           >
@@ -37,7 +38,7 @@ const TokenPortfolioRow: React.FC<TokenPortfolioRowType> = ({
       </td>
       <td>
         <div>
-          <span>{countDollars}</span>
+          <span>{changeDecimal(countDollars)}$</span>
           <span className="text-gray-600">{`${count} ${coinSymbol}`}</span>
         </div>
       </td>

@@ -26,11 +26,13 @@ namespace CryptoHelpers.API.Controllers.CryptoTracker
             return Ok(new { portfolioTokens = portfolioTokens });
         }
 
-        [HttpGet("GetPortfolioTokensByPortfolioId")]
+        [HttpGet("GetPortfoliosById")]
         public async Task<IActionResult> GetPortfolioTokensByPortfolioId(int portfolioId)
         {
+            int userId = GetUserId();
+
             List<PortfolioTokenDto> portfolioTokens = await _portfolioTokenManagementService
-                                                      .GetPortfolioTokensByPortfolioAsync(portfolioId);
+                                                      .GetPortfolioTokensByPortfolioAsync(portfolioId,userId);
 
             return Ok(new { portfolioTokens = portfolioTokens });
         }

@@ -36,7 +36,6 @@ const Header = () => {
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     if (token) {
-      console.log(123);
       dispatch(login(token));
     }
   }, []);

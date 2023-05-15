@@ -4,6 +4,7 @@ using ApplicationService.implementations.CryptoTracker.TransactionManagement;
 using ApplicationService.implementations.TradeFututreManagement;
 using ApplicationService.implementations.UserManagement;
 using Contracts;
+using CryptoCollector.API;
 using CryptoHelpers.API.JWT;
 using Data.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -57,6 +58,7 @@ builder.Services.AddScoped<IUserManagementService, UserManagementService>();
 builder.Services.AddScoped<IPortfolioManagementService,PortfolioManagementService>();
 builder.Services.AddScoped<ITransactionManagementService, TransactionManagementService>();
 builder.Services.AddScoped<IPortfolioTokenManagementService,PortfolioTokenManagementService>();
+builder.Services.AddScoped<ICryptoCollectorManagementService,CryptoCollectorManagementService>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 #endregion

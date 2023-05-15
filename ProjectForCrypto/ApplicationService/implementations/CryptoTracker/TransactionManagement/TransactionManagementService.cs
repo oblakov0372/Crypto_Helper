@@ -26,6 +26,7 @@ namespace ApplicationService.implementations.CryptoTracker.TransactionManagement
                 transactions.Add(new TransactionDto
                 {
                     Id = transaction.Id,
+                    PortfolioId = transaction.PortfolioId,
                     CoinSymbol = transaction.CoinSymbol,
                     Count = transaction.Count,
                     Price = transaction.Price,
@@ -42,6 +43,7 @@ namespace ApplicationService.implementations.CryptoTracker.TransactionManagement
                 transactions.Add(new TransactionDto
                 {
                     Id = transaction.Id,
+                    PortfolioId = transaction.PortfolioId,
                     CoinSymbol = transaction.CoinSymbol,
                     Count = transaction.Count,
                     Price = transaction.Price,

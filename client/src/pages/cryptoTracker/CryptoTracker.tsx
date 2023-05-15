@@ -1,10 +1,9 @@
 import styles from "./CryptoTracker.module.scss";
 import image from "../../assets/img/картинка 1.png";
-import { Column } from "../../types/Column";
+import { ColumnType } from "../../types/ColumnType";
 import TokenPortfolioRow from "../../components/rows/tokenPortfolioRow/TokenPortfolioRow";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import { useEffect, useState } from "react";
-import ModalWindow from "../../components/modalWindows/modalWindow/ModalWindow";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { PortfolioType } from "../../types/PortfolioType";
@@ -12,34 +11,63 @@ import PortfolioModalWindow from "../../components/modalWindows/portfolioModalWi
 import { authenticatedRequest } from "../../utils/Request";
 import { setPortfolios } from "../../redux/slices/portfolio";
 import PortfolioNameItem from "../../components/UI/PortfolioNameItem/PortfolioNameItem";
+import { setPortfolioTokens } from "../../redux/slices/portfolioToken";
+import { PortfolioTokenType } from "../../types/PortfolioTokenType";
+import { changeDecimal } from "../../utils/Utils";
 const CryptoTracker = () => {
-  const columns: Column[] = [
+  //Table columns
+  const columns: ColumnType[] = [
     { name: "Coin", orderBy: "coin" },
     { name: "Price", orderBy: "price" },
     { name: "Holdings", orderBy: "holdings" },
   ];
   const dispatch = useDispatch();
+
   const portfolios = useSelector(
     (state: RootState) => state.portfolioSlice.portfolios
   );
-
+  const { portfolioTokens, totalMoney } = useSelector(
+    (state: RootState) => state.portfolioTokenSlice
+  );
+  //Current Portfolio which user select
   const [currentPortoflio, setCurrentPortfolio] = useState<PortfolioType>(
     portfolios[0]
   );
+  //Modal Window for add new Portfolio
   const [isOpenModalPortfolio, setIsOpenPortfolioModal] =
     useState<boolean>(false);
 
   useEffect(() => {
-    const fetchData = async () => {
+    //Get All User Portfolios from backend
+    const fetchDataPortfolios = async () => {
       try {
         const response = await authenticatedRequest("Portfolio");
         dispatch(setPortfolios(response.data.portfolios));
         setCurrentPortfolio(response.data.portfolios[0]);
       } catch (error) {}
     };
-
-    fetchData();
+    //Call fetches
+    fetchDataPortfolios();
   }, []);
+
+  //get portfolio tokens
+  useEffect(() => {
+    const fetchDataPortfolioTones = async () => {
+      try {
+        const response = await authenticatedRequest(
+          `PortfolioToken/GetPortfoliosById?portfolioId=${currentPortoflio.id}`,
+          { method: "get" }
+        );
+
+        dispatch(setPortfolioTokens(response.data.portfolioTokens));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    if (currentPortoflio) {
+      fetchDataPortfolioTones();
+    }
+  }, [currentPortoflio]);
 
   return (
     <>
@@ -95,9 +123,12 @@ const CryptoTracker = () => {
                     <div className="w-full flex justify-between items-center ">
                       <div>
                         <p className="text-2xl text-yellow-100">
-                          {currentPortoflio.name}
+                          {currentPortoflio && currentPortoflio.name}
                         </p>
-                        <span className="font-extrabold text-xl"> 1233.3$</span>
+                        <span className="font-extrabold text-xl">
+                          {" "}
+                          {changeDecimal(totalMoney)}$
+                        </span>
                       </div>
                       <div>
                         <MyButton>Add Transaction</MyButton>
@@ -108,21 +139,25 @@ const CryptoTracker = () => {
                     <table>
                       <thead>
                         <tr>
-                          {columns.map((column: Column, index: number) => (
+                          {columns.map((column: ColumnType, index: number) => (
                             <th key={index}>{column.name}</th>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
-                        <TokenPortfolioRow
-                          coinSymbol="BTC"
-                          count={100}
-                          countDollars={2000}
-                          name="Bitcoin"
-                          percentChange24H={2}
-                          price={29000}
-                          key={1}
-                        />
+                        {portfolioTokens.map(
+                          (portfolioToken: PortfolioTokenType) => (
+                            <TokenPortfolioRow
+                              coinSymbol={portfolioToken.coinSymbol}
+                              count={portfolioToken.count}
+                              countDollars={portfolioToken.countDollars}
+                              name={portfolioToken.coinName}
+                              percentChange24H={portfolioToken.percentChange24H}
+                              price={portfolioToken.price}
+                              key={portfolioToken.id}
+                            />
+                          )
+                        )}
                       </tbody>
                     </table>
                   </div>
