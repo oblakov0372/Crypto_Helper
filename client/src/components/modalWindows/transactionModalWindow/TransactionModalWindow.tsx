@@ -5,6 +5,9 @@ import { CryptoType } from "../../../types/CryptoType";
 import { anonymRequest } from "../../../utils/Request";
 import MyButton from "../../UI/MyButton/MyButton";
 import styles from "./TransactionModalWindow.module.scss";
+import { addPortfolioToken } from "../../../redux/slices/portfolioToken";
+import { useDispatch } from "react-redux";
+import { PortfolioTokenType } from "../../../types/PortfolioTokenType";
 
 type Props = {
   setIsOpenTransactionModalWindow: (state: boolean) => void;
@@ -18,7 +21,9 @@ type CreateTransactionType = {
 
 const TransactionModalWindow: React.FC<Props> = ({
   setIsOpenTransactionModalWindow,
+  currentPortfolio,
 }) => {
+  const dispatch = useDispatch();
   useEffect(() => {
     //Get first 500 cryptocurrencies from coinmarketcap
     const fetchDataCryptocurrencies = async () => {
@@ -39,6 +44,23 @@ const TransactionModalWindow: React.FC<Props> = ({
   });
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    setIsOpenTransactionModalWindow(false);
+    const cryptocurrency: CryptoType | undefined = cryptocurrencies.find(
+      (c) => c.symbol == transaction.coinSymbol
+    );
+    if (cryptocurrency) {
+      const newPortfolioToken: PortfolioTokenType = {
+        id: -1,
+        count: transaction.count,
+        coinSymbol: transaction.coinSymbol,
+        coinName: cryptocurrency.name,
+        countDollars: transaction.count * cryptocurrency.price,
+        percentChange24H: cryptocurrency.percentChange24H,
+        price: cryptocurrency.price,
+        portfolioId: currentPortfolio.id,
+      };
+      dispatch(addPortfolioToken(newPortfolioToken));
+    }
   };
   return (
     <div>
@@ -51,17 +73,18 @@ const TransactionModalWindow: React.FC<Props> = ({
           <div className={styles.formGroup}>
             <label htmlFor="cryptocurrencies">Choose a cryptocurrency: </label>
             <select
-              required
-              onChange={(e: any) =>
+              onChange={(e: any) => {
                 setTransaction((prev: CreateTransactionType) => ({
                   coinSymbol: e.target.value,
                   count: prev.count,
                   price: prev.price,
-                }))
-              }
+                }));
+              }}
+              required
               id="cryptocurrencies"
               name="cryptocurrencies"
             >
+              <option value=""></option>
               {cryptocurrencies.map((crypto: CryptoType) => (
                 <option key={crypto.cmcRank} value={crypto.symbol}>
                   {crypto.symbol}

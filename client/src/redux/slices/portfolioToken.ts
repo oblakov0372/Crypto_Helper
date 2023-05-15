@@ -23,7 +23,18 @@ export const PortfolioTokenSlice = createSlice({
       );
     },
     addPortfolioToken(state, action: PayloadAction<PortfolioTokenType>) {
-      state.portfolioTokens.push(action.payload);
+      const portfolioToken = state.portfolioTokens.find(
+        (t) => t.coinSymbol == action.payload.coinSymbol
+      );
+      if (portfolioToken) {
+        portfolioToken.count += action.payload.count * 1;
+        portfolioToken.countDollars +=
+          action.payload.count * action.payload.price;
+        state.totalMoney += action.payload.count * action.payload.price;
+      } else {
+        state.portfolioTokens.push(action.payload);
+        state.totalMoney += action.payload.count * action.payload.price;
+      }
     },
   },
 });
