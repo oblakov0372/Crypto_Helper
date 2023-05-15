@@ -8,8 +8,6 @@ namespace ApplicationService.Models.CryptoTracker.TransactionModels
         [Required]
         public string CoinSymbol { get; set; } = string.Empty;
         [Required]
-        public TransactionType TransactionType { get; set; }
-        [Required]
         public decimal? Count { get; set; }
         [Required]
         public decimal? Price { get; set; }

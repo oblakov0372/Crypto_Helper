@@ -80,7 +80,6 @@ namespace ApplicationService.implementations.CryptoTracker.TransactionManagement
                 CoinSymbol = model.CoinSymbol,
                 PortfolioId = model.PortfolioId,
                 Price = model.Price,
-                TransactionType = model.TransactionType,
                 Count = model.Count,
                 CreatedOn = DateTime.Now,
                 CreatedBy = userId
@@ -148,7 +147,6 @@ namespace ApplicationService.implementations.CryptoTracker.TransactionManagement
             transactionForChange.CoinSymbol = model.CoinSymbol;
             transactionForChange.Count = model.Count;
             transactionForChange.Price = model.Price;
-            transactionForChange.TransactionType = model.TransactionType;
             transactionForChange.UpdatedOn = DateTime.Now;
             transactionForChange.UpdateBy = userId;
             try

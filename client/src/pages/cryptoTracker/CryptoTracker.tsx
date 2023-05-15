@@ -8,12 +8,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { PortfolioType } from "../../types/PortfolioType";
 import PortfolioModalWindow from "../../components/modalWindows/portfolioModalWindow/portfolioModalWindow";
-import { authenticatedRequest } from "../../utils/Request";
+import { anonymRequest, authenticatedRequest } from "../../utils/Request";
 import { setPortfolios } from "../../redux/slices/portfolio";
 import PortfolioNameItem from "../../components/UI/PortfolioNameItem/PortfolioNameItem";
 import { setPortfolioTokens } from "../../redux/slices/portfolioToken";
 import { PortfolioTokenType } from "../../types/PortfolioTokenType";
 import { changeDecimal } from "../../utils/Utils";
+import { CryptoType } from "../../types/CryptoType";
+import TransactionModalWindow from "../../components/modalWindows/transactionModalWindow/TransactionModalWindow";
 const CryptoTracker = () => {
   //Table columns
   const columns: ColumnType[] = [
@@ -36,6 +38,9 @@ const CryptoTracker = () => {
   //Modal Window for add new Portfolio
   const [isOpenModalPortfolio, setIsOpenPortfolioModal] =
     useState<boolean>(false);
+  //Modal Window for add or edit Transaction
+  const [isOpenModelTransaction, setIsOpenModelTransaction] =
+    useState<boolean>(false);
 
   useEffect(() => {
     //Get All User Portfolios from backend
@@ -46,6 +51,7 @@ const CryptoTracker = () => {
         setCurrentPortfolio(response.data.portfolios[0]);
       } catch (error) {}
     };
+
     //Call fetches
     fetchDataPortfolios();
   }, []);
@@ -131,7 +137,11 @@ const CryptoTracker = () => {
                         </span>
                       </div>
                       <div>
-                        <MyButton>Add Transaction</MyButton>
+                        <MyButton
+                          onClick={() => setIsOpenModelTransaction(true)}
+                        >
+                          Add Transaction
+                        </MyButton>
                       </div>
                     </div>
                   </div>
@@ -172,6 +182,12 @@ const CryptoTracker = () => {
         <PortfolioModalWindow
           setIsOpenPortfolioModal={setIsOpenPortfolioModal}
           setCurrentPortfolio={setCurrentPortfolio}
+        />
+      )}
+      {isOpenModelTransaction && (
+        <TransactionModalWindow
+          setIsOpenTransactionModalWindow={setIsOpenModelTransaction}
+          currentPortfolio={currentPortoflio}
         />
       )}
     </>

@@ -83,4 +83,3 @@ D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\bin\Debug\net6.
 D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\bin\Debug\net6.0\Contracts.dll
 D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\bin\Debug\net6.0\Contracts.pdb
 D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-D:\www\ProjectForCryptoDiplom\ProjectForCrypto\CryptoHelpers.API\obj\Debug\net6.0\CryptoHelpers.API.MvcApplicationPartsAssemblyInfo.cs

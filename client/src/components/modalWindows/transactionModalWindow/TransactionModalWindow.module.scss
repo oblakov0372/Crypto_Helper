@@ -1,0 +1,23 @@
+.formGroup {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin-inline: auto;
+
+  label {
+    font-size: 20px;
+    margin-bottom: 8px;
+    margin-right: 20px;
+  }
+  select {
+    padding: 5px 15px 5px 1px;
+    border-radius: 5px;
+    background-color: rgba(1, 1, 1, 0.6);
+  }
+  input {
+    border-radius: 5px;
+    background-color: rgba(1, 1, 1, 0.6);
+    padding: 5px 10px;
+  }
+}
