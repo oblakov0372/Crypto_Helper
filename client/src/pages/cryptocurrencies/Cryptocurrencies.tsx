@@ -74,7 +74,7 @@ const Cryptocurrencies = () => {
       </div>
       <div className={styles.cryptoList}>
         {isLoadingError ? (
-          <h2 className="error">
+          <h2 className="error text-2xl">
             Failed to load data. Please try again later.
           </h2>
         ) : isLoading ? (

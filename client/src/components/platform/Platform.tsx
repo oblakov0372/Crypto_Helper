@@ -15,8 +15,10 @@ const Platform: React.FC<PlatformType> = ({
         <div className={styles.left}>
           <h2 className={styles.title}>{title}</h2>
           <p>{description}</p>
-          <MyButton href={link} target="_blank">
-            Go to {title.substring(3)}
+          <MyButton>
+            <a href={link} target="_blank">
+              Go to {title.substring(3)}
+            </a>
           </MyButton>
         </div>
         <div className={styles.right}>

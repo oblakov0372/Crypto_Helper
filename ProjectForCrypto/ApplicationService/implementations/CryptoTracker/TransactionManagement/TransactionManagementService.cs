@@ -30,7 +30,6 @@ namespace ApplicationService.implementations.CryptoTracker.TransactionManagement
                     CoinSymbol = transaction.CoinSymbol,
                     Count = transaction.Count,
                     Price = transaction.Price,
-                    TransactionType = transaction.TransactionType
                 });
             }
             return transactions;
@@ -47,7 +46,6 @@ namespace ApplicationService.implementations.CryptoTracker.TransactionManagement
                     CoinSymbol = transaction.CoinSymbol,
                     Count = transaction.Count,
                     Price = transaction.Price,
-                    TransactionType = transaction.TransactionType
                 });
             }
             return transactions;
@@ -117,6 +115,7 @@ namespace ApplicationService.implementations.CryptoTracker.TransactionManagement
                 {
                     PortfolioTokenEntity oldPortfolioToken = _portfolioTokenManagementService
                                                  .GetPortfolioTokenByUserIdCoinSymbolAndPortfolioId(userId, transactionForChange.CoinSymbol, model.PortfolioId);
+
                     await _portfolioTokenManagementService.UpdatePortfolioTokenAsync(new PortfolioTokenUpdateModel
                     {
                         Id = oldPortfolioToken.Id,

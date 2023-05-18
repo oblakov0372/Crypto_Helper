@@ -98,7 +98,7 @@ const TradesTracker = () => {
         </div>
         <div>
           {isLoadingDataError ? (
-            <h2 className="error">{errorMessage}</h2>
+            <h2 className="error text-2xl">{errorMessage}</h2>
           ) : isLoadingData ? (
             <LoadingSpinner />
           ) : (

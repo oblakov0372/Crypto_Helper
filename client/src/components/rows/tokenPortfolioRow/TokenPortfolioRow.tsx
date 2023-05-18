@@ -7,14 +7,12 @@ type TokenPortfolioRowType = {
   price: number;
   percentChange24H: number;
   count: number;
-  countDollars: number;
 };
 
 const TokenPortfolioRow: React.FC<TokenPortfolioRowType> = ({
   name,
   coinSymbol,
   count,
-  countDollars,
   percentChange24H,
   price,
 }) => {
@@ -38,7 +36,7 @@ const TokenPortfolioRow: React.FC<TokenPortfolioRowType> = ({
       </td>
       <td>
         <div>
-          <span>{changeDecimal(countDollars)}$</span>
+          <span>{changeDecimal(count * price)}$</span>
           <span className="text-gray-600">{`${count} ${coinSymbol}`}</span>
         </div>
       </td>

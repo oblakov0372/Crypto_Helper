@@ -1,5 +1,4 @@
-﻿using Data.Entities.CryptoTracker;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ApplicationService.Models.CryptoTracker.TransactionModels
 {

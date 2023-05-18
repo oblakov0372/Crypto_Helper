@@ -48,7 +48,7 @@ const platforms: PlatformType[] = [
     imgLink:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaBDQhpcH6VMkMNj7D30FKBuPJS4JHTf1TvUOsMkdlG6PrlyW9Q-jHJHKQwMxyRmQsgck&usqp=CAU",
     link: "https://t.me/CryptoOblakov_0372",
-    title: "My Telegram Chanel",
+    title: "Admin Telegram Chanel",
     description:
       "I enjoy sharing fascinating market insights and situations in my personally owned Telegram channel, where I strive to provide unique perspectives and analysis that can be useful to my followers. Through this platform, I aim to keep my audience updated and informed about the latest trends and developments in the financial world, and provide valuable insights into the market that can help them make informed decisions.",
   },

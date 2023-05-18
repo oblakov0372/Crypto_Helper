@@ -30,7 +30,7 @@ namespace Data.Migrations
                 column: "PortfolioId",
                 principalTable: "Portfolios",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
+                onDelete: ReferentialAction.Cascade);
         }
 
         /// <inheritdoc />
@@ -56,7 +56,7 @@ namespace Data.Migrations
                 column: "PordfolioId",
                 principalTable: "Portfolios",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
+                onDelete: ReferentialAction.Cascade);
         }
     }
 }

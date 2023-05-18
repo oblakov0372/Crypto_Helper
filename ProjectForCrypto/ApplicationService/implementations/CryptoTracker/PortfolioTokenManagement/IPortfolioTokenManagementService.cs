@@ -1,6 +1,5 @@
 ﻿using ApplicationService.DTOs.CryptoTracker;
 using ApplicationService.Models.CryptoTracker.PortfolioTokenModels;
-using ApplicationService.Models.CryptoTracker.TransactionModels;
 using Data.Entities.CryptoTracker;
 
 namespace ApplicationService.implementations.CryptoTracker.PortfolioTokenManagement

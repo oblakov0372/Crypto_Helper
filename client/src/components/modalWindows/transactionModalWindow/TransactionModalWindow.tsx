@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ModalWindow from "../modalWindow/ModalWindow";
 import { PortfolioType } from "../../../types/PortfolioType";
 import { CryptoType } from "../../../types/CryptoType";
-import { anonymRequest } from "../../../utils/Request";
+import { anonymRequest, authenticatedRequest } from "../../../utils/Request";
 import MyButton from "../../UI/MyButton/MyButton";
 import styles from "./TransactionModalWindow.module.scss";
 import { addPortfolioToken } from "../../../redux/slices/portfolioToken";
@@ -42,24 +42,41 @@ const TransactionModalWindow: React.FC<Props> = ({
     count: 0,
     price: 0,
   });
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    setIsOpenTransactionModalWindow(false);
-    const cryptocurrency: CryptoType | undefined = cryptocurrencies.find(
-      (c) => c.symbol == transaction.coinSymbol
-    );
-    if (cryptocurrency) {
-      const newPortfolioToken: PortfolioTokenType = {
-        id: -1,
-        count: transaction.count,
-        coinSymbol: transaction.coinSymbol,
-        coinName: cryptocurrency.name,
-        countDollars: transaction.count * cryptocurrency.price,
-        percentChange24H: cryptocurrency.percentChange24H,
-        price: cryptocurrency.price,
-        portfolioId: currentPortfolio.id,
-      };
-      dispatch(addPortfolioToken(newPortfolioToken));
+
+    try {
+      await authenticatedRequest(
+        "Transaction",
+        { method: "post" },
+        {
+          coinSymbol: transaction.coinSymbol,
+          count: transaction.count,
+          price: transaction.price,
+          portfolioId: currentPortfolio.id,
+        }
+      );
+
+      const cryptocurrency: CryptoType | undefined = cryptocurrencies.find(
+        (c) => c.symbol == transaction.coinSymbol
+      );
+
+      if (cryptocurrency) {
+        const newPortfolioToken: PortfolioTokenType = {
+          id: -1,
+          count: transaction.count,
+          coinSymbol: transaction.coinSymbol,
+          coinName: cryptocurrency.name,
+          percentChange24H: cryptocurrency.percentChange24H,
+          price: cryptocurrency.price,
+          portfolioId: currentPortfolio.id,
+        };
+
+        dispatch(addPortfolioToken(newPortfolioToken));
+        setIsOpenTransactionModalWindow(false);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
   return (
@@ -108,7 +125,7 @@ const TransactionModalWindow: React.FC<Props> = ({
             />
           </div>
           <div className={styles.formGroup}>
-            <label htmlFor="count">Trade Money$:</label>
+            <label htmlFor="tradePrice">Trade Price$:</label>
             <input
               required
               type="number"

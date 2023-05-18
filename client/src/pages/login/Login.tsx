@@ -1,5 +1,5 @@
-import React, { FormEventHandler, MouseEvent, useState } from "react";
-import { Link, Route, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Login.module.scss";
 import { anonymRequest } from "../../utils/Request";
 import { useDispatch } from "react-redux";

@@ -4,6 +4,7 @@ using Contracts;
 using CryptoCollector.API;
 using CryptoCollector.API.Models;
 using Data.Entities.CryptoTracker;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApplicationService.implementations.CryptoTracker.PortfolioTokenManagement
 {
@@ -102,14 +103,14 @@ namespace ApplicationService.implementations.CryptoTracker.PortfolioTokenManagem
                 return false;
             if (model.Count < 0)
             {
-                await DeletePortfolioTokenAsync(model.Id);
-                await _unitOfWork.SaveAsync();
-                return true;
+                return await DeletePortfolioTokenAsync(portfolioTokenForChange.Id);
             }
             portfolioTokenForChange.CoinSymbol = model.CoinSymbol;
             portfolioTokenForChange.Count = model.Count;
             portfolioTokenForChange.UpdatedOn = DateTime.Now;
             portfolioTokenForChange.UpdateBy = userId;
+
+
             try
             {
                 _unitOfWork.PortfolioTokens.Update(portfolioTokenForChange);

@@ -1,7 +1,18 @@
 import React from "react";
 import styles from "./ModalWindow.module.scss";
 
-const ModalWindow = ({ title, children, setIsOpenModal, ...props }: any) => {
+type Props = {
+  title: string;
+  children?: any;
+  setIsOpenModal: (state: boolean) => void;
+};
+
+const ModalWindow: React.FC<Props> = ({
+  title,
+  children,
+  setIsOpenModal,
+  ...props
+}) => {
   return (
     <div className={styles.modalBackground}>
       <div className={styles.modalWrapper}>

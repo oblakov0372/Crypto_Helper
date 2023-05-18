@@ -6,5 +6,4 @@ export type PortfolioTokenType = {
   price: number;
   percentChange24H: number;
   count: number;
-  countDollars: number;
 };
