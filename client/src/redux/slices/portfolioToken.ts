@@ -38,10 +38,30 @@ export const PortfolioTokenSlice = createSlice({
       }
       state.totalMoney += action.payload.count * action.payload.price;
     },
+    editPortfolioToken(state, action: PayloadAction<PortfolioTokenType>) {
+      const portfolioTokenForEdit = state.portfolioTokens.find(
+        (p) => p.id === action.payload.id
+      );
+      if (portfolioTokenForEdit) {
+        const portfolioTokenIndex = state.portfolioTokens.indexOf(
+          portfolioTokenForEdit
+        );
+        state.portfolioTokens[portfolioTokenIndex].coinSymbol =
+          action.payload.coinSymbol;
+        state.portfolioTokens[portfolioTokenIndex].count = action.payload.count;
+        state.portfolioTokens[portfolioTokenIndex].portfolioId =
+          action.payload.portfolioId;
+        state.portfolioTokens[portfolioTokenIndex].price = action.payload.price;
+        state.portfolioTokens[portfolioTokenIndex].coinName =
+          action.payload.coinName;
+        state.portfolioTokens[portfolioTokenIndex].percentChange24H =
+          action.payload.percentChange24H;
+      }
+    },
   },
 });
 
-export const { setPortfolioTokens, addPortfolioToken } =
+export const { setPortfolioTokens, addPortfolioToken, editPortfolioToken } =
   PortfolioTokenSlice.actions;
 
 export default PortfolioTokenSlice.reducer;
