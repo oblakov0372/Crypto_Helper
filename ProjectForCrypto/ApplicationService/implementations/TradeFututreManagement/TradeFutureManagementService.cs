@@ -30,7 +30,7 @@ namespace ApplicationService.implementations.TradeFututreManagement
             }
             return trades;
         }
-        public async Task<bool> CreateTradeAsync(TradeFutureCreateModel model, int userId)
+        public async Task<TradeFutureDto> CreateTradeAsync(TradeFutureCreateModel model, int userId)
         {
             var trade = new TradeFutureEntity()
             {
@@ -49,11 +49,21 @@ namespace ApplicationService.implementations.TradeFututreManagement
             {
                 await _unitOfWork.TradeFutures.AddAsync(trade);
                 await _unitOfWork.SaveAsync();
-                return true;
+                TradeFutureDto tradeFutureDto = new TradeFutureDto()
+                {
+                    Id = trade.Id,
+                    CoinName = trade.CoinName,
+                    EarnedMoney = trade.EarnedMoney,
+                    PositionSize = trade.PositionSize,
+                    Risk = trade.Risk,
+                    Reward = trade.Reward,
+                    TradingViewImgLink = trade.TradingViewImgLink,
+                };
+                return tradeFutureDto;
             }
             catch
             {
-                return false;
+                return null;
             }
         }
 

@@ -30,9 +30,9 @@ namespace CryptoHelpers.API.Controllers.CryptoTracker
         public async Task<IActionResult> CreatePortfolio([FromBody] PortfolioCreateModel model)
         {
             int userId = GetUserId();
-            var result = await  _portfolioManagementService.CreatePortfolioAsync(model, userId);
-            if (result)
-                return Ok("Portfolio was created");
+            var createdPortfolio = await  _portfolioManagementService.CreatePortfolioAsync(model, userId);
+            if (createdPortfolio != null)
+                return Ok(createdPortfolio);
 
             return BadRequest("Portfolio wasn't created");
         }

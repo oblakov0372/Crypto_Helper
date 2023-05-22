@@ -38,9 +38,9 @@ namespace CryptoHelpers.API.Controllers.CryptoTracker
         public async Task<IActionResult> CreateTransaction([FromBody] TransactionCreateModel model)
         {
             int userId = GetUserId();
-            var result = await _transactionManagementService.CreateTransactionAsync(model, userId);
-            if (result)
-                return Ok("Transaction was created");
+            var createdTransaction = await _transactionManagementService.CreateTransactionAsync(model, userId);
+            if (createdTransaction != null)
+                return Ok(createdTransaction);
 
             return BadRequest("Transaction wasn't created");
         }

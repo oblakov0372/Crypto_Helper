@@ -74,7 +74,7 @@ namespace ApplicationService.implementations.CryptoTracker.PortfolioTokenManagem
         {
             return _unitOfWork.PortfolioTokens.FindAsync(pt => pt.CoinSymbol == coinSymbol && pt.UserId == userId && pt.PortfolioId == portfolioId).FirstOrDefault();
         }
-        public async Task<bool> CreatePortfolioTokenAsync(PortfolioTokenCreateModel model, int userId)
+        public async Task<PortfolioTokenDto> CreatePortfolioTokenAsync(PortfolioTokenCreateModel model, int userId)
         {
             PortfolioTokenEntity portfolioToken = new PortfolioTokenEntity()
             {
@@ -89,11 +89,21 @@ namespace ApplicationService.implementations.CryptoTracker.PortfolioTokenManagem
             {
                 await _unitOfWork.PortfolioTokens.AddAsync(portfolioToken);
                 await _unitOfWork.SaveAsync();
-                return true;
+                PortfolioTokenDto portfolioTokenDto = new PortfolioTokenDto
+                {
+                    Id = portfolioToken.Id,
+                    CoinSymbol = portfolioToken.CoinSymbol,
+                    CoinName = portfolioToken.CoinSymbol.ToUpper(),
+                    Count = portfolioToken.Count,
+                    CountDollars = portfolioToken.Count,
+                    PercentChange24H = 0,
+                    PortfolioId = portfolioToken.PortfolioId,
+                };
+                return portfolioTokenDto;
             }
             catch
             {
-                return false;
+                return null;
             }
         }
         public async Task<bool> UpdatePortfolioTokenAsync(PortfolioTokenUpdateModel model, int userId)

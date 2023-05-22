@@ -51,9 +51,9 @@ namespace CryptoHelpers.API.Controllers
         public async Task<IActionResult> CreateTrade([FromBody] TradeFutureCreateModel model)
         {
             int userId = GetUserId();
-            var result = await _tradeFutureManagementService.CreateTradeAsync(model,userId);
-            if (result)
-                return Ok("Trade was created");
+            var createdDto = await _tradeFutureManagementService.CreateTradeAsync(model,userId);
+            if (createdDto != null)
+                return Ok(createdDto);
 
             return BadRequest("Trade wasn't created");
         }

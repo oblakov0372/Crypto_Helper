@@ -9,7 +9,7 @@ namespace ApplicationService.implementations.CryptoTracker.PortfolioTokenManagem
         public Task<List<PortfolioTokenDto>> GetPortfolioTokensAsync(int userId);
         public Task<List<PortfolioTokenDto>> GetPortfolioTokensByPortfolioAsync(int portfolioId,int userId);
         public PortfolioTokenEntity GetPortfolioTokenByUserIdCoinSymbolAndPortfolioId(int userId, string coinSymbol,int portfolioId);
-        public Task<bool> CreatePortfolioTokenAsync(PortfolioTokenCreateModel model, int userId);
+        public Task<PortfolioTokenDto> CreatePortfolioTokenAsync(PortfolioTokenCreateModel model, int userId);
         public Task<bool> UpdatePortfolioTokenAsync(PortfolioTokenUpdateModel model, int userId);
         public Task<bool> DeletePortfolioTokenAsync(int portfolioTokenId);
 

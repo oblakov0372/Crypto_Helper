@@ -27,7 +27,7 @@ namespace ApplicationService.implementations.CryptoTracker.Portfolio
             }
             return portfolios;
         }
-        public async Task<bool> CreatePortfolioAsync(PortfolioCreateModel model, int userId)
+        public async Task<PortfolioDto> CreatePortfolioAsync(PortfolioCreateModel model, int userId)
         {
             PortfolioEntity portfolio = new PortfolioEntity
             {
@@ -41,11 +41,17 @@ namespace ApplicationService.implementations.CryptoTracker.Portfolio
             {
                 await _unitOfWork.Portfolios.AddAsync(portfolio);
                 await _unitOfWork.SaveAsync();
-                return true;
+                PortfolioDto portfolioDto = new PortfolioDto
+                {
+                    Id = portfolio.Id,
+                    Name = portfolio.Name,
+                    Description = portfolio.Description,
+                };
+                return portfolioDto;
             }
             catch 
             {
-                return false;
+                return null;
             }
         }
         public async Task<bool> UpdatePortfolioAsync(PortfolioUpdateModel model,int userId) 

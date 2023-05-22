@@ -50,7 +50,7 @@ namespace ApplicationService.implementations.CryptoTracker.TransactionManagement
             }
             return transactions;
         }
-        public async Task<bool> CreateTransactionAsync(TransactionCreateModel model, int userId)
+        public async Task<TransactionDto> CreateTransactionAsync(TransactionCreateModel model, int userId)
         {
             PortfolioTokenEntity portfolioToken = _portfolioTokenManagementService
                                                   .GetPortfolioTokenByUserIdCoinSymbolAndPortfolioId(userId, model.CoinSymbol, model.PortfolioId);
@@ -86,11 +86,19 @@ namespace ApplicationService.implementations.CryptoTracker.TransactionManagement
             {
                 await _unitOfWork.Transactions.AddAsync(transaction);
                 await _unitOfWork.SaveAsync();
-                return true;
+                TransactionDto transactionDto = new TransactionDto()
+                {
+                    Id = transaction.Id,
+                    CoinSymbol = transaction.CoinSymbol,
+                    Price = transaction.Price,
+                    PortfolioId = transaction.PortfolioId,
+                    Count = transaction.Count
+                };
+                return transactionDto;
             }
             catch
             {
-                return false;
+                return null;
             }
         }
         public async Task<bool> UpdateTrasnactionAsync(TransactionUpdateModel model, int userId)
@@ -140,7 +148,7 @@ namespace ApplicationService.implementations.CryptoTracker.TransactionManagement
                     Id = oldPortfolioToken.Id,
                     CoinSymbol = oldPortfolioToken.CoinSymbol,
                     Count = oldPortfolioToken.Count - transactionForChange.Count
-                },userId);
+                }, userId);
             }
 
             transactionForChange.CoinSymbol = model.CoinSymbol;

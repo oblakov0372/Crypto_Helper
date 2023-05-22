@@ -8,7 +8,7 @@ namespace ApplicationService.implementations.CryptoTracker.TransactionManagement
     {
         public Task<List<TransactionDto>> GetTransactionsAsync(int userId);
         public Task<List<TransactionDto>> GetTransactionsByPortfolioAsync(int portfolioId);
-        public Task<bool> CreateTransactionAsync(TransactionCreateModel model, int userId);
+        public Task<TransactionDto> CreateTransactionAsync(TransactionCreateModel model, int userId);
         public Task<bool> UpdateTrasnactionAsync(TransactionUpdateModel model, int userId);
         public Task<bool> DeleteTrasnactionAsync(int transactionId);
     }
