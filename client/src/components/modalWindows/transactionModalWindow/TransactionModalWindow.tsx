@@ -46,7 +46,7 @@ const TransactionModalWindow: React.FC<Props> = ({
     e.preventDefault();
 
     try {
-      await authenticatedRequest(
+      const response = await authenticatedRequest(
         "Transaction",
         { method: "post" },
         {
@@ -63,7 +63,7 @@ const TransactionModalWindow: React.FC<Props> = ({
 
       if (cryptocurrency) {
         const newPortfolioToken: PortfolioTokenType = {
-          id: -1,
+          id: response.data.id,
           count: transaction.count,
           coinSymbol: transaction.coinSymbol,
           coinName: cryptocurrency.name,
@@ -92,9 +92,8 @@ const TransactionModalWindow: React.FC<Props> = ({
             <select
               onChange={(e: any) => {
                 setTransaction((prev: CreateTransactionType) => ({
+                  ...prev,
                   coinSymbol: e.target.value,
-                  count: prev.count,
-                  price: prev.price,
                 }));
               }}
               required
@@ -117,9 +116,8 @@ const TransactionModalWindow: React.FC<Props> = ({
               value={transaction.count}
               onChange={(e: any) =>
                 setTransaction((prev: CreateTransactionType) => ({
-                  coinSymbol: prev.coinSymbol,
+                  ...prev,
                   count: e.target.value,
-                  price: prev.price,
                 }))
               }
             />
@@ -132,8 +130,7 @@ const TransactionModalWindow: React.FC<Props> = ({
               value={transaction.price}
               onChange={(e: any) =>
                 setTransaction((prev: CreateTransactionType) => ({
-                  coinSymbol: prev.coinSymbol,
-                  count: prev.count,
+                  ...prev,
                   price: e.target.value,
                 }))
               }

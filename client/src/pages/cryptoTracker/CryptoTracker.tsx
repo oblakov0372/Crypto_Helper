@@ -154,9 +154,11 @@ const CryptoTracker = () => {
                           <div className="flex justify-between items-end ">
                             <h1 className="text-2xl font-extrabold text-yellow-100 ">
                               {currentPortoflio.name}
-                              <span className="font-normal text-gray-300 text-xl">
-                                ({currentPortoflio.description})
-                              </span>
+                              {currentPortoflio.description && (
+                                <span className="font-normal text-gray-300 text-xl">
+                                  ({currentPortoflio.description})
+                                </span>
+                              )}
                             </h1>
                           </div>
                           <span className="font-extrabold text-xl">

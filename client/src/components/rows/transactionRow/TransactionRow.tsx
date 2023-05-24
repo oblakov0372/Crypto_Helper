@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { TransactionType } from "../../../types/TransactionType";
 import edit from "../../../assets/icons/edit.png";
 import remove from "../../../assets/icons/delete.png";
@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteTransaction } from "../../../redux/slices/transaction";
 import { RootState } from "../../../redux/store";
 import { editPortfolioToken } from "../../../redux/slices/portfolioToken";
+import TransactionEditModalWindow from "../../modalWindows/transactionEditModalWindow/TransactionEditModalWindow";
 
 type Props = {
   id: number;
@@ -67,17 +68,42 @@ const TransactionRow: React.FC<Props> = ({
     }
   };
 
+  const [isOpenEditTransactionModal, setIsOpenEditTransactionModal] =
+    useState<boolean>();
+
   return (
-    <tr>
-      <td className="font-extrabold">{coinSymbol}</td>
-      <td style={count < 0 ? { color: "red" } : { color: "green" }}>{count}</td>
-      <td>{price}</td>
-      <td>{count * price}</td>
-      <td>
-        <img onClick={() => {}} src={edit} alt="edit" width={30} />
-        <img onClick={() => deleteRow()} src={remove} alt="remove" width={30} />
-      </td>
-    </tr>
+    <>
+      <tr>
+        <td className="font-extrabold">{coinSymbol}</td>
+        <td style={count < 0 ? { color: "red" } : { color: "green" }}>
+          {count}
+        </td>
+        <td>{price}</td>
+        <td>{count * price}</td>
+        <td>
+          <img
+            onClick={() => {
+              setIsOpenEditTransactionModal(true);
+            }}
+            src={edit}
+            alt="edit"
+            width={30}
+          />
+          <img
+            onClick={() => deleteRow()}
+            src={remove}
+            alt="remove"
+            width={30}
+          />
+        </td>
+      </tr>
+      {isOpenEditTransactionModal && (
+        <TransactionEditModalWindow
+          setIsOpenTransactionModalWindow={setIsOpenEditTransactionModal}
+          transaction={{ id, coinSymbol, count, portfolioId, price }}
+        />
+      )}
+    </>
   );
 };
 

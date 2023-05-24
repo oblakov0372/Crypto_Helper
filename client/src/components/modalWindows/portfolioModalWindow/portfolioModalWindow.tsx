@@ -35,20 +35,20 @@ const PortfolioModalWindow: React.FC<portfolioModalWindowProps> = ({
       );
       setIsOpenPortfolioModal(false);
       setCurrentPortfolio({
-        id: -1,
+        id: response.data.id,
         name: portfolio.name,
         description: portfolio.description,
       });
+      dispatch(
+        addPortfolio({
+          id: response.data.id,
+          name: portfolio.name,
+          description: portfolio.description,
+        })
+      );
     } catch (error: any) {
       console.log(error);
     }
-    dispatch(
-      addPortfolio({
-        id: -1,
-        name: portfolio.name,
-        description: portfolio.description,
-      })
-    );
   };
 
   return (

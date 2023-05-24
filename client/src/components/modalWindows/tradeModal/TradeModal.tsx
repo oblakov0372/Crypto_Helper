@@ -56,6 +56,8 @@ const TradeModal: React.FC<Props> = ({ trade, setIsOpenModal }) => {
           tradingViewImgLink: tradingViewImgLink,
         }
       );
+      trade.id = !isEdit ? response.data.id : id;
+      console.log(trade);
 
       dispatch(isEdit ? editTrade(trade) : addTrade(trade));
       setIsOpenModal(false);
