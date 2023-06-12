@@ -17,7 +17,7 @@ const ModalWindow: React.FC<Props> = ({
     <div className={styles.modalBackground}>
       <div className={styles.modalWrapper}>
         <div className={styles.modalHeader}>
-          <h3>{title}</h3>
+          <h3 className="text-2xl font-bold">{title}</h3>
           <button
             onClick={() => setIsOpenModal(false)}
             className={styles.closeButton}

@@ -61,7 +61,7 @@ const PortfolioTransactionsModalWindow: React.FC<Props> = ({
         <h2 className="error text-2xl">{errorMessage}</h2>
       ) : isLoading ? (
         <LoadingSpinner />
-      ) : (
+      ) : transactions.length > 0 ? (
         <table className={styles.table}>
           <thead>
             <tr>
@@ -83,6 +83,10 @@ const PortfolioTransactionsModalWindow: React.FC<Props> = ({
             ))}
           </tbody>
         </table>
+      ) : (
+        <h1 className="text-xl font-bold">
+          At the moment, you have no transactions :(
+        </h1>
       )}
     </ModalWindow>
   );

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ModalWindow from "../modalWindow/ModalWindow";
 import { PortfolioType } from "../../../types/PortfolioType";
 import styles from "./TransactionEditModalWindow.module.scss";
-import { anonymRequest } from "../../../utils/Request";
+import { anonymRequest, authenticatedRequest } from "../../../utils/Request";
 import { CryptoType } from "../../../types/CryptoType";
 import MyButton from "../../UI/MyButton/MyButton";
 
@@ -37,6 +37,29 @@ const TransactionEditModalWindow: React.FC<Props> = ({
   const [transactionForEdit, setTransactionForEdit] =
     useState<EditTransactionType>(transaction);
 
+  //put edit transaction
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+
+    try {
+      const response = await authenticatedRequest(
+        "Transaction",
+        { method: "put" },
+        {
+          id: transactionForEdit.id,
+          coinSymbol: transactionForEdit.coinSymbol,
+          count: transactionForEdit.count,
+          price: transactionForEdit.price,
+          portfolioId: transactionForEdit.portfolioId,
+        }
+      );
+
+      setIsOpenTransactionModalWindow(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <ModalWindow
@@ -44,7 +67,7 @@ const TransactionEditModalWindow: React.FC<Props> = ({
         setIsOpenModal={setIsOpenTransactionModalWindow}
         className="w-1/2"
       >
-        <form className="text-center">
+        <form className="text-center" onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
             <label htmlFor="cryptocurrencies">Choose a cryptocurrency: </label>
             <select

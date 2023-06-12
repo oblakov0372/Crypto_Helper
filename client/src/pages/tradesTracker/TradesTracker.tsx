@@ -103,36 +103,44 @@ const TradesTracker = () => {
             <LoadingSpinner />
           ) : (
             <div className={styles.functional}>
-              <div className={styles.tableWrapper}>
-                <div className={styles.title}>
-                  <h1>My Trades</h1>
-                </div>
-                <table>
-                  <thead>
-                    <tr>
-                      {tableColumns.map((column: ColumnType, index: number) => (
-                        <th key={index}>{column.name}</th>
+              {trades.length > 0 ? (
+                <div className={styles.tableWrapper}>
+                  <div className={styles.title}>
+                    <h1>My Trades</h1>
+                  </div>
+                  <table>
+                    <thead>
+                      <tr>
+                        {tableColumns.map(
+                          (column: ColumnType, index: number) => (
+                            <th key={index}>{column.name}</th>
+                          )
+                        )}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {trades.map((trade: TradeFutureType) => (
+                        <TradeRow
+                          key={trade.id}
+                          id={trade.id}
+                          coinName={trade.coinName}
+                          positionSize={trade.positionSize}
+                          risk={trade.risk}
+                          reward={trade.reward}
+                          tradingViewImgLink={trade.tradingViewImgLink}
+                          earnedMoney={trade.earnedMoney}
+                          setIsOpenModal={setIsOpenModal}
+                          setTrade={setTrade}
+                        />
                       ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {trades.map((trade: TradeFutureType) => (
-                      <TradeRow
-                        key={trade.id}
-                        id={trade.id}
-                        coinName={trade.coinName}
-                        positionSize={trade.positionSize}
-                        risk={trade.risk}
-                        reward={trade.reward}
-                        tradingViewImgLink={trade.tradingViewImgLink}
-                        earnedMoney={trade.earnedMoney}
-                        setIsOpenModal={setIsOpenModal}
-                        setTrade={setTrade}
-                      />
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <h1 className="text-3xl font-bold">
+                  At the moment, you have no trades(
+                </h1>
+              )}
               <div className={styles.functional__ride}>
                 <MyButton
                   onClick={() => {
